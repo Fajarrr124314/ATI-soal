@@ -180,34 +180,36 @@ export const AdminModal: React.FC<AdminModalProps> = ({
         {/* Modal Header */}
         <div
           style={{
-            padding: '16px 24px',
-            borderBottom: '1px solid #dadce0',
+            padding: '18px 24px',
+            borderBottom: '1px solid #e0e0e0',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             backgroundColor: '#ffffff',
+            flexShrink: 0,
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <div
               style={{
-                width: 36,
-                height: 36,
+                width: 40,
+                height: 40,
                 borderRadius: '50%',
                 backgroundColor: 'var(--primary-light)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: 'var(--primary-color)',
+                flexShrink: 0,
               }}
             >
-              <Lock size={18} />
+              <Lock size={19} />
             </div>
             <div>
-              <h2 style={{ fontSize: 18, fontWeight: 700, fontFamily: 'var(--font-heading)' }}>
+              <h2 style={{ fontSize: 18, fontWeight: 700, fontFamily: 'var(--font-heading)', color: '#202124' }}>
                 Panel Pengaturan Admin
               </h2>
-              <p style={{ fontSize: 12, color: '#5f6368' }}>
+              <p style={{ fontSize: 13, color: '#5f6368', marginTop: 2 }}>
                 Atur durasi timer, kunci jawaban, acak soal, dan rekap peserta
               </p>
             </div>
@@ -215,20 +217,25 @@ export const AdminModal: React.FC<AdminModalProps> = ({
           <button
             onClick={onClose}
             style={{
-              background: 'transparent',
+              background: '#f1f3f4',
               border: 'none',
+              borderRadius: '50%',
+              width: 32,
+              height: 32,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               cursor: 'pointer',
               color: '#5f6368',
-              padding: 4,
             }}
           >
-            <X size={22} />
+            <X size={18} />
           </button>
         </div>
 
         {/* Auth Gate if not logged in */}
         {!isAuthenticated ? (
-          <div style={{ padding: '36px 24px', textAlign: 'center', maxWidth: 400, margin: '0 auto' }}>
+          <div style={{ padding: '36px 24px', textAlign: 'center', maxWidth: 400, margin: '0 auto', flexShrink: 0 }}>
             <div
               style={{
                 width: 56,
@@ -274,76 +281,102 @@ export const AdminModal: React.FC<AdminModalProps> = ({
           </div>
         ) : (
           <>
-            {/* Tab Navigation */}
+            {/* Tab Navigation (Pill Tabs - No Overlapping) */}
             <div
               style={{
                 display: 'flex',
-                borderBottom: '1px solid #dadce0',
+                alignItems: 'center',
+                gap: 10,
+                padding: '12px 24px',
+                borderBottom: '1px solid #e0e0e0',
                 backgroundColor: '#f8f9fa',
+                flexShrink: 0,
                 overflowX: 'auto',
               }}
             >
               <button
+                type="button"
                 onClick={() => setActiveTab('settings')}
                 style={{
-                  padding: '12px 18px',
-                  border: 'none',
-                  background: activeTab === 'settings' ? '#ffffff' : 'transparent',
-                  borderBottom: activeTab === 'settings' ? `3px solid var(--primary-color)` : 'none',
+                  padding: '8px 18px',
+                  borderRadius: 24,
+                  border: activeTab === 'settings' ? 'none' : '1px solid #dadce0',
+                  backgroundColor: activeTab === 'settings' ? 'var(--primary-color)' : '#ffffff',
+                  color: activeTab === 'settings' ? '#ffffff' : '#3c4043',
                   fontWeight: 600,
-                  fontSize: 14,
-                  color: activeTab === 'settings' ? 'var(--primary-color)' : '#5f6368',
+                  fontSize: 13,
                   cursor: 'pointer',
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
                   whiteSpace: 'nowrap',
+                  boxShadow: activeTab === 'settings' ? '0 1px 4px rgba(103,58,183,0.35)' : 'none',
+                  transition: 'all 0.15s ease',
                 }}
               >
-                <Sliders size={16} /> Pengaturan & Timer
+                <Sliders size={15} />
+                <span>Pengaturan &amp; Timer</span>
               </button>
+
               <button
+                type="button"
                 onClick={() => setActiveTab('keys')}
                 style={{
-                  padding: '12px 18px',
-                  border: 'none',
-                  background: activeTab === 'keys' ? '#ffffff' : 'transparent',
-                  borderBottom: activeTab === 'keys' ? `3px solid var(--primary-color)` : 'none',
+                  padding: '8px 18px',
+                  borderRadius: 24,
+                  border: activeTab === 'keys' ? 'none' : '1px solid #dadce0',
+                  backgroundColor: activeTab === 'keys' ? 'var(--primary-color)' : '#ffffff',
+                  color: activeTab === 'keys' ? '#ffffff' : '#3c4043',
                   fontWeight: 600,
-                  fontSize: 14,
-                  color: activeTab === 'keys' ? 'var(--primary-color)' : '#5f6368',
+                  fontSize: 13,
                   cursor: 'pointer',
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
                   whiteSpace: 'nowrap',
+                  boxShadow: activeTab === 'keys' ? '0 1px 4px rgba(103,58,183,0.35)' : 'none',
+                  transition: 'all 0.15s ease',
                 }}
               >
-                <KeyRound size={16} /> Kunci Jawaban
+                <KeyRound size={15} />
+                <span>Kunci Jawaban</span>
               </button>
+
               <button
+                type="button"
                 onClick={() => setActiveTab('participants')}
                 style={{
-                  padding: '12px 18px',
-                  border: 'none',
-                  background: activeTab === 'participants' ? '#ffffff' : 'transparent',
-                  borderBottom: activeTab === 'participants' ? `3px solid var(--primary-color)` : 'none',
+                  padding: '8px 18px',
+                  borderRadius: 24,
+                  border: activeTab === 'participants' ? 'none' : '1px solid #dadce0',
+                  backgroundColor: activeTab === 'participants' ? 'var(--primary-color)' : '#ffffff',
+                  color: activeTab === 'participants' ? '#ffffff' : '#3c4043',
                   fontWeight: 600,
-                  fontSize: 14,
-                  color: activeTab === 'participants' ? 'var(--primary-color)' : '#5f6368',
+                  fontSize: 13,
                   cursor: 'pointer',
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
                   whiteSpace: 'nowrap',
+                  boxShadow: activeTab === 'participants' ? '0 1px 4px rgba(103,58,183,0.35)' : 'none',
+                  transition: 'all 0.15s ease',
                 }}
               >
-                <Users size={16} /> Data Peserta ({submissions.length})
+                <Users size={15} />
+                <span>Data Peserta ({submissions.length})</span>
               </button>
             </div>
 
-            {/* Tab Contents */}
-            <div style={{ padding: '20px 24px', overflowY: 'auto', flex: 1 }}>
+            {/* Tab Contents Container */}
+            <div
+              style={{
+                padding: '24px',
+                overflowY: 'auto',
+                flex: '1 1 auto',
+                minHeight: 0,
+                backgroundColor: '#ffffff',
+              }}
+            >
               {/* TAB 1: PENGATURAN & TIMER */}
               {activeTab === 'settings' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
@@ -972,6 +1005,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                 display: 'flex',
                 justifyContent: 'flex-end',
                 backgroundColor: '#fafafa',
+                flexShrink: 0,
               }}
             >
               <button onClick={onClose} className="btn-gform btn-secondary" style={{ padding: '8px 20px' }}>
