@@ -192,7 +192,7 @@ export const App: React.FC = () => {
 
     const totalQ1 = settings.sessions[1].totalQuestions || 20;
     const totalQ2 = settings.sessions[2].totalQuestions || 45;
-    const totalQ3 = settings.sessions[3].totalQuestions || 150;
+    const totalQ3 = settings.sessions[3].totalQuestions || 157;
 
     // Calculate Sesi 3
     let correct3 = 0;
@@ -379,7 +379,7 @@ export const App: React.FC = () => {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1 }}>
                     <FileText size={20} style={{ flexShrink: 0, color: '#16a34a' }} />
                     <span>
-                      <strong>Lembar Jawaban Sesi 3 (150 Butir)</strong>: Bacalah nomor soal pada <strong>Dokumen Soal Sesi 3</strong>, lalu pilih respon Anda di bawah ini (SS, S, TS, STS).
+                      <strong>Lembar Jawaban Sesi 3 (157 Butir)</strong>: Bacalah nomor soal pada <strong>Dokumen Soal Sesi 3</strong>, lalu pilih respon Anda di bawah ini (SS, S, TS, STS).
                     </span>
                   </div>
                   <a

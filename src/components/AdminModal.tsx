@@ -838,7 +838,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: '#475569' }}>
                         <AlertTriangle size={16} style={{ flexShrink: 0, color: '#0284c7' }} />
                         <span>
-                          <strong>Dokumen Resmi Sesi 3 (150 Butir Teracak):</strong> Telah disiapkan dokumen PDF terpisah untuk lembar soal (tanpa jawaban) dan dokumen PDF kunci jawaban resmi penguji.
+                          <strong>Dokumen Resmi Sesi 3 (157 Butir Teracak):</strong> Telah disiapkan dokumen PDF terpisah untuk lembar soal (tanpa jawaban) dan dokumen PDF kunci jawaban resmi penguji.
                         </span>
                       </div>
                       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>

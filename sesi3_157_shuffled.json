@@ -1,0 +1,944 @@
+[
+  {
+    "new_num": 1,
+    "orig_num": 99,
+    "text": "Saya lamban dalam bertindak dan memiliki ritme kerja yang tidak efisien.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 2,
+    "orig_num": 81,
+    "text": "Saya terbiasa menyusun strategi dan perencanaan sebelum mengeksekusi tindakan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 3,
+    "orig_num": 72,
+    "text": "Saya terbiasa mengerjakan tugas dengan setengah-setengah.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 4,
+    "orig_num": 96,
+    "text": "Saya menolak bekerja sama dan hanya ingin dibiarkan sendirian.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 5,
+    "orig_num": 83,
+    "text": "Saya mampu beradaptasi dan tetap produktif dalam berbagai kondisi lingkungan kerja.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 6,
+    "orig_num": 108,
+    "text": "Saya mampu menyusun skala prioritas dengan tepat ketika banyak tugas datang bersamaan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 7,
+    "orig_num": 17,
+    "text": "Saya kurang pandai membuat orang lain menyukai saya.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 8,
+    "orig_num": 102,
+    "text": "Saya memahami faktor-faktor yang dapat memotivasi semangat kerja rekan lain.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 9,
+    "orig_num": 74,
+    "text": "Saya mudah tersulut emosi saat berinteraksi dengan salah satu anggota kelompok.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 10,
+    "orig_num": 75,
+    "text": "Saya menolak berbagi informasi penting yang dibutuhkan rekan satu tim.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 11,
+    "orig_num": 44,
+    "text": "Saya mampu menyerap dan mengikuti banyak informasi kerja sekaligus.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 12,
+    "orig_num": 138,
+    "text": "Saya tidak pernah menyebarkan gosip atau menjelek-jelekkan rekan kerja di belakang.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 13,
+    "orig_num": 54,
+    "text": "Saya bertindak secara terburu-buru tanpa perencanaan matang.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 14,
+    "orig_num": 19,
+    "text": "Saya tidak terlalu termotivasi untuk mencapai kesuksesan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 15,
+    "orig_num": 137,
+    "text": "Saya ceroboh dan sering meninggalkan barang bawaan atau dokumen penting tanpa pengawasan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 16,
+    "orig_num": 106,
+    "text": "Saya disiplin mengeksekusi rencana kerja yang telah saya susun.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 17,
+    "orig_num": 51,
+    "text": "Saya merasa canggung dan enggan berbicara saat berada di antara orang-orang baru.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 18,
+    "orig_num": 142,
+    "text": "Saya mampu bekerja optimal dan tetap fokus di bawah tekanan tenggat waktu yang ketat.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 19,
+    "orig_num": 104,
+    "text": "Saya cepat menangkap substansi dan inti persoalan dari berbagai situasi.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 20,
+    "orig_num": 35,
+    "text": "Saya mudah bingung saat dihadapkan pada situasi yang kompleks.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 21,
+    "orig_num": 152,
+    "text": "Saya tahu cara membangun daya tarik dan kepercayaan orang lain melalui komunikasi yang baik.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 22,
+    "orig_num": 1,
+    "text": "Saya tahu cara meyakinkan orang lain.",
+    "answer": "S"
+  },
+  {
+    "new_num": 23,
+    "orig_num": 123,
+    "text": "Saya terampil dan luwes dalam membangun relasi kerja lintas divisi.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 24,
+    "orig_num": 50,
+    "text": "Saya merasa harus menghargai keputusan-keputusan yang telah disepakati oleh kelompok.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 25,
+    "orig_num": 42,
+    "text": "Saya mampu mengoordinasikan orang lain untuk melakukan berbagai pekerjaan dengan rapi.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 26,
+    "orig_num": 103,
+    "text": "Saya memiliki kemampuan komunikasi yang lancar dan artikulatif saat berbicara.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 27,
+    "orig_num": 32,
+    "text": "Saya menjaga profesionalitas dengan tidak menceritakan masalah pribadi di lingkungan kerja.",
+    "answer": "S"
+  },
+  {
+    "new_num": 28,
+    "orig_num": 154,
+    "text": "Saya memegang teguh komitmen dan janji yang telah saya sepakati dalam kerja sama.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 29,
+    "orig_num": 82,
+    "text": "Saya selalu fokus pada pencapaian target dan tujuan organisasi.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 30,
+    "orig_num": 127,
+    "text": "Menjadi bagian dari tim kerja yang solid merupakan hal yang membanggakan bagi saya.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 31,
+    "orig_num": 21,
+    "text": "Saya tidak pernah berprasangka buruk terhadap rekan kerja.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 32,
+    "orig_num": 36,
+    "text": "Saya melanggar peraturan yang telah ditetapkan perusahaan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 33,
+    "orig_num": 39,
+    "text": "Saya bertanggung jawab penuh atas kualitas setiap hasil kerja yang saya kerjakan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 34,
+    "orig_num": 79,
+    "text": "Saya memiliki rekam jejak selalu berhasil menuntaskan tugas.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 35,
+    "orig_num": 109,
+    "text": "Saya siap mengambil tanggung jawab dan konsekuensi atas setiap keputusan yang saya ambil.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 36,
+    "orig_num": 53,
+    "text": "Saya sering mengerjakan berbagai hal mendekati batas akhir tenggat waktu.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 37,
+    "orig_num": 121,
+    "text": "Saya memiliki nilai moral yang baik serta menghormati orang tua dan norma masyarakat.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 38,
+    "orig_num": 124,
+    "text": "Saya mampu mengelola dan menuntaskan banyak tugas secara teratur dan lancar.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 39,
+    "orig_num": 90,
+    "text": "Saya cenderung menghindari mempelajari buku manual atau instruksi kerja yang teknis.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 40,
+    "orig_num": 43,
+    "text": "Saya menyelesaikan banyak pekerjaan dengan cepat dan rapi.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 41,
+    "orig_num": 13,
+    "text": "Saya membutuhkan dorongan dari orang lain hanya untuk memulai suatu hal.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 42,
+    "orig_num": 122,
+    "text": "Saya terbiasa berinisiatif memulai komunikasi dan dialog kerja yang produktif.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 43,
+    "orig_num": 105,
+    "text": "Saya memiliki fleksibilitas dan mampu menyelesaikan berbagai jenis penugasan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 44,
+    "orig_num": 91,
+    "text": "Saya meninggalkan pekerjaan begitu saja sebelum tugas tersebut benar-benar tuntas.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 45,
+    "orig_num": 33,
+    "text": "Saya cenderung pasif dan hanya ingin berada di belakang layar tanpa inisiatif.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 46,
+    "orig_num": 62,
+    "text": "Saya selalu terbuka menerima kritik yang membangun demi peningkatan kualitas diri.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 47,
+    "orig_num": 27,
+    "text": "Saya menjalankan pekerjaan dan bertindak sesuai dengan rencana yang telah dibuat.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 48,
+    "orig_num": 9,
+    "text": "Saya merasa perlu menghargai keputusan-keputusan yang dibuat oleh kelompok.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 49,
+    "orig_num": 156,
+    "text": "Saya merasa bahwa arah masa depan karir saya tidak memiliki tujuan yang jelas.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 50,
+    "orig_num": 14,
+    "text": "Saya sering terlambat datang bekerja.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 51,
+    "orig_num": 141,
+    "text": "Saya memiliki keyakinan diri mampu mengatasi setiap tantangan tugas yang diberikan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 52,
+    "orig_num": 45,
+    "text": "Saya bekerja dengan tulus dan penuh dedikasi.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 53,
+    "orig_num": 128,
+    "text": "Saya selalu mempertimbangkan secara matang aspek positif dan negatif sebelum memutuskan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 54,
+    "orig_num": 26,
+    "text": "Saya selalu mampu menyelesaikan pekerjaan tepat waktu.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 55,
+    "orig_num": 15,
+    "text": "Saya menyelesaikan pekerjaan hanya dengan usaha yang secukupnya.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 56,
+    "orig_num": 8,
+    "text": "Saya berusaha untuk melampaui pencapaian orang lain secara sportif.",
+    "answer": "S"
+  },
+  {
+    "new_num": 57,
+    "orig_num": 48,
+    "text": "Saya mudah menjalin pertemanan dan kemitraan kerja.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 58,
+    "orig_num": 120,
+    "text": "Saya mudah menyerah saat menghadapi kendala pekerjaan yang sulit.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 59,
+    "orig_num": 157,
+    "text": "Saya memiliki kesabaran dan mampu mengendalikan emosi sehingga tidak melampiaskan amarah.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 60,
+    "orig_num": 143,
+    "text": "Saya ingin memastikan bahwa seluruh proses kerja berjalan tertib sesuai standar yang berlaku.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 61,
+    "orig_num": 95,
+    "text": "Saya sering merasa cemas dan tidak nyaman saat harus berada di lingkungan kerja ramai.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 62,
+    "orig_num": 110,
+    "text": "Saya merasa tidak memiliki kemampuan untuk memimpin rekan kerja.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 63,
+    "orig_num": 153,
+    "text": "Saya mampu mengelola beberapa pekerjaan sekaligus secara paralel (multitasking) dengan efektif.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 64,
+    "orig_num": 113,
+    "text": "Saya mampu menangani penugasan yang memiliki tingkat kesulitan tinggi dengan baik.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 65,
+    "orig_num": 97,
+    "text": "Saya bersikeras mengerjakan segala hal sendirian tanpa mau berkolaborasi.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 66,
+    "orig_num": 87,
+    "text": "Saya tidak tahu apa yang harus saya bicarakan saat rapat koordinasi.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 67,
+    "orig_num": 80,
+    "text": "Saya memiliki ketahanan dan daya analisis dalam menangani masalah-masalah rumit.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 68,
+    "orig_num": 25,
+    "text": "Saya cepat dan tangkas dalam menyelesaikan banyak hal.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 69,
+    "orig_num": 93,
+    "text": "Saya enggan menyampaikan ide atau pendapat saya dalam diskusi tim.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 70,
+    "orig_num": 23,
+    "text": "Saya berani mengambil inisiatif untuk memimpin orang lain.",
+    "answer": "S"
+  },
+  {
+    "new_num": 71,
+    "orig_num": 78,
+    "text": "Saya percaya diri saat harus berbicara atau memimpin di depan umum.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 72,
+    "orig_num": 41,
+    "text": "Saya merasa tidak memiliki kelebihan atau tidak menonjol dalam hal apapun.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 73,
+    "orig_num": 135,
+    "text": "Saya menjaga stamina dan kebugaran tubuh agar dapat bekerja secara optimal.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 74,
+    "orig_num": 100,
+    "text": "Saya selalu hadir tepat waktu jika diundang dalam rapat atau pertemuan kedinasan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 75,
+    "orig_num": 136,
+    "text": "Saya menganggap bahwa membangun hubungan baik dengan rekan kerja bukanlah hal yang penting.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 76,
+    "orig_num": 140,
+    "text": "Saya memiliki ide-ide inovatif yang bermanfaat bagi efisiensi kerja.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 77,
+    "orig_num": 30,
+    "text": "Saya selalu berusaha memberikan kinerja yang lebih baik dari standar umum.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 78,
+    "orig_num": 155,
+    "text": "Saya merasa mudah terintimidasi oleh orang lain sehingga takut mengambil keputusan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 79,
+    "orig_num": 119,
+    "text": "Saya merasa bahwa bekerja adalah beban dan bukan hal yang saya inginkan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 80,
+    "orig_num": 38,
+    "text": "Saya merasa sulit untuk melakukan pendekatan atau komunikasi dengan orang lain.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 81,
+    "orig_num": 11,
+    "text": "Saya tidak suka melakukan hal-hal yang membuat orang lain memperhatikan saya secara berlebihan.",
+    "answer": "S"
+  },
+  {
+    "new_num": 82,
+    "orig_num": 65,
+    "text": "Saya menjalankan setiap tugas sesuai dengan prosedur standar dan rencana kerja.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 83,
+    "orig_num": 112,
+    "text": "Saya membeda-bedakan perlakuan terhadap rekan kerja berdasarkan gender.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 84,
+    "orig_num": 57,
+    "text": "Saya jarang merasa nyaman ketika berada di tengah banyak orang.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 85,
+    "orig_num": 28,
+    "text": "Saya teliti dan detail dalam setiap pekerjaan saya.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 86,
+    "orig_num": 40,
+    "text": "Saya mengelak dari tugas-tugas yang telah menjadi tanggung jawab saya.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 87,
+    "orig_num": 46,
+    "text": "Saya membuat perencanaan terstruktur dan disiplin merealisasikan rencana tersebut.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 88,
+    "orig_num": 92,
+    "text": "Saya tidak tertarik memikirkan inovasi atau prospek pengembangan organisasi.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 89,
+    "orig_num": 6,
+    "text": "Saya meyakini segala sesuatu perlu dipikirkan secara seksama dan runtut.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 90,
+    "orig_num": 147,
+    "text": "Saya tidak mampu merancang jadwal dan pembagian tugas dalam aktivitas kelompok.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 91,
+    "orig_num": 73,
+    "text": "Saya selalu menunggu perintah orang lain dan tidak pernah berinisiatif.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 92,
+    "orig_num": 16,
+    "text": "Saya selalu bersemangat dalam mempelajari hal-hal baru dan mengembangkan keterampilan kerja.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 93,
+    "orig_num": 67,
+    "text": "Saya menetapkan standar kualitas tinggi untuk hasil kerja saya sendiri.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 94,
+    "orig_num": 77,
+    "text": "Saya mampu menyampaikan materi atau ide sehingga membuat audiens tertarik.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 95,
+    "orig_num": 150,
+    "text": "Saya mudah berkecil hati saat menerima umpan balik kritis atas hasil kerja saya.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 96,
+    "orig_num": 5,
+    "text": "Saya selalu bekerja dan bertindak dengan terencana.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 97,
+    "orig_num": 7,
+    "text": "Saya cepat akrab dan mudah berbaur dengan orang lain.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 98,
+    "orig_num": 70,
+    "text": "Saya konsisten berusaha menyempurnakan setiap hasil pekerjaan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 99,
+    "orig_num": 69,
+    "text": "Saya mempertimbangkan waktu dan cara yang tepat dalam mengutarakan kritik.",
+    "answer": "S"
+  },
+  {
+    "new_num": 100,
+    "orig_num": 63,
+    "text": "Saya mampu menghasilkan solusi kreatif dan efektif dengan cepat.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 101,
+    "orig_num": 126,
+    "text": "Saya mematuhi jadwal kerja dan agenda kegiatan yang telah ditetapkan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 102,
+    "orig_num": 71,
+    "text": "Saya seringkali lupa meletakkan peralatan atau dokumen kerja di tempat yang semestinya.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 103,
+    "orig_num": 130,
+    "text": "Saya merasa kesulitan mengekspresikan pendapat profesional saya secara konstruktif.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 104,
+    "orig_num": 94,
+    "text": "Saya merasa kesulitan mempengaruhi atau memotivasi orang lain untuk bekerja sama.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 105,
+    "orig_num": 56,
+    "text": "Saya tidak pernah berani menyampaikan perbedaan pendapat apapun.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 106,
+    "orig_num": 18,
+    "text": "Jika dibandingkan dengan orang lain, saya cenderung kurang menikmati berinteraksi sosial.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 107,
+    "orig_num": 47,
+    "text": "Saya adalah orang yang berfokus kuat pada pencapaian tujuan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 108,
+    "orig_num": 149,
+    "text": "Saya sengaja mengisolasi diri dan menghindari komunikasi dengan rekan satu kantor.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 109,
+    "orig_num": 114,
+    "text": "Saya memandang tantangan dan keterbatasan sebagai peluang untuk berkembang.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 110,
+    "orig_num": 86,
+    "text": "Saya mampu mengendalikan emosi pribadi agar tidak mempengaruhi profesionalitas kerja.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 111,
+    "orig_num": 24,
+    "text": "Saya mampu menyampaikan gagasan secara jelas dalam pidato atau presentasi dadakan.",
+    "answer": "S"
+  },
+  {
+    "new_num": 112,
+    "orig_num": 115,
+    "text": "Saya kurang memperhatikan kebersihan dan kesehatan lingkungan kerja.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 113,
+    "orig_num": 20,
+    "text": "Saya menghabiskan waktu dengan tidak melakukan apapun yang bermanfaat.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 114,
+    "orig_num": 59,
+    "text": "Saya mengalokasikan sedikit waktu dan sedikit usaha dalam bekerja.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 115,
+    "orig_num": 37,
+    "text": "Saya membiarkan diri saya diperlakukan tidak semestinya tanpa berusaha membela diri.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 116,
+    "orig_num": 148,
+    "text": "Saya sering bertindak gegabah tanpa memikirkan konsekuensinya terlebih dahulu.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 117,
+    "orig_num": 12,
+    "text": "Saya mengerjakan pekerjaan yang tidak saya sukai sesegera mungkin agar cepat tuntas.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 118,
+    "orig_num": 117,
+    "text": "Saya sengaja menjaga jarak dan membatasi komunikasi dengan anggota tim saya.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 119,
+    "orig_num": 10,
+    "text": "Saya tidak banyak berbicara dan pasif dalam forum diskusi.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 120,
+    "orig_num": 4,
+    "text": "Saya menyelesaikan banyak pekerjaan dengan efisien.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 121,
+    "orig_num": 139,
+    "text": "Saya mampu bersosialisasi secara sopan dan terhormat dengan berbagai kalangan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 122,
+    "orig_num": 116,
+    "text": "Saya tidak dapat memikirkan gagasan atau ide perbaikan kerja.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 123,
+    "orig_num": 64,
+    "text": "Rekan-rekan menghargai saya karena saya memiliki pertimbangan dan keputusan yang objektif.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 124,
+    "orig_num": 98,
+    "text": "Saya sering tidak menuntaskan apa yang telah saya mulai.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 125,
+    "orig_num": 55,
+    "text": "Saya mengabaikan tugas-tugas kedinasan saya.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 126,
+    "orig_num": 132,
+    "text": "Saya selalu meluangkan waktu untuk menyusun perencanaan sebelum memulai aktivitas penting.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 127,
+    "orig_num": 89,
+    "text": "Saya tidak mengonsumsi minuman keras atau obat terlarang.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 128,
+    "orig_num": 134,
+    "text": "Saya menghindari kekerasan fisik atau pertikaian dan mengutamakan penyelesaian damai.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 129,
+    "orig_num": 60,
+    "text": "Saya selalu menghormati dan bersikap sopan kepada atasan serta rekan yang lebih senior.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 130,
+    "orig_num": 52,
+    "text": "Saya mengerjakan pekerjaan sesegera mungkin tanpa menunda-nunda.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 131,
+    "orig_num": 84,
+    "text": "Saya menuntut standar mutu dan kualitas tinggi dalam setiap output pekerjaan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 132,
+    "orig_num": 107,
+    "text": "Saya berhati-hati dan cermat agar terhindar dari membuat kesalahan kerja.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 133,
+    "orig_num": 66,
+    "text": "Saya mudah menyesuaikan diri dengan perubahan lingkungan dan budaya kerja baru.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 134,
+    "orig_num": 129,
+    "text": "Saya berkomitmen tinggi dan konsisten menjalankan amanah yang diberikan kepada saya.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 135,
+    "orig_num": 49,
+    "text": "Saya selalu ingin memberikan hasil yang terbaik.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 136,
+    "orig_num": 29,
+    "text": "Saya dapat bergaul secara luwes dengan orang-orang yang baru saja saya kenal.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 137,
+    "orig_num": 2,
+    "text": "Saya berusaha mempengaruhi orang lain ke arah yang positif.",
+    "answer": "S"
+  },
+  {
+    "new_num": 138,
+    "orig_num": 118,
+    "text": "Saya kurang pandai bekerja sama dalam tim.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 139,
+    "orig_num": 58,
+    "text": "Saya mudah merasa patah semangat ketika menghadapi hambatan atau kegagalan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 140,
+    "orig_num": 151,
+    "text": "Saya tetap bersikap santun dan profesional kepada orang lain meskipun pernah ada perbedaan pendapat.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 141,
+    "orig_num": 88,
+    "text": "Saya menjaga gaya hidup sehat dan tidak merokok saat jam kerja.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 142,
+    "orig_num": 144,
+    "text": "Saya memiliki mental pantang menyerah sebelum tujuan pekerjaan tercapai.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 143,
+    "orig_num": 76,
+    "text": "Saya menjaga etika tutur kata dan tidak pernah berbicara kasar.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 144,
+    "orig_num": 3,
+    "text": "Saya mengubah perencanaan menjadi tindakan nyata.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 145,
+    "orig_num": 68,
+    "text": "Saya berusaha agar semua anggota tim merasa diterima dan dilibatkan dalam kelompok.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 146,
+    "orig_num": 133,
+    "text": "Saya tidak tahu cara mengendalikan amarah saat terjadi perselisihan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 147,
+    "orig_num": 22,
+    "text": "Saya selalu bersikap ceria dan optimis saat berinteraksi.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 148,
+    "orig_num": 101,
+    "text": "Saya selalu menjunjung tinggi kejujuran dan tidak pernah berbohong dalam laporan kerja.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 149,
+    "orig_num": 125,
+    "text": "Saya cepat menguasai beragam bidang keterampilan kerja baru.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 150,
+    "orig_num": 146,
+    "text": "Saya mudah panik saat terjadi masalah mendadak dalam pekerjaan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 151,
+    "orig_num": 61,
+    "text": "Saya berusaha menarik perhatian orang lain secara berlebihan demi popularitas.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 152,
+    "orig_num": 145,
+    "text": "Saya menjaga rahasia organisasi dan tidak mengumbar informasi sensitif.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 153,
+    "orig_num": 111,
+    "text": "Saya ragu-ragu dalam membimbing orang lain mencapai target kerja.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 154,
+    "orig_num": 31,
+    "text": "Saya aktif mendukung dan membantu rekan tim atau anggota kelompok saya.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 155,
+    "orig_num": 131,
+    "text": "Saya selalu menjunjung tinggi integritas, kejujuran, dan transparansi dalam setiap pelaporan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 156,
+    "orig_num": 34,
+    "text": "Saya tidak meninggalkan suatu tugas sebelum tugas tersebut terselesaikan dengan tuntas.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 157,
+    "orig_num": 85,
+    "text": "Saya mampu tetap berpikir jernih dan tenang dalam situasi kerja darurat atau kritis.",
+    "answer": "SS"
+  }
+]

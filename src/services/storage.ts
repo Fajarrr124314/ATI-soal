@@ -12,10 +12,10 @@ import {
 } from './supabase';
 import * as XLSX from 'xlsx';
 
-const SETTINGS_KEY = 'ati_form_settings_v2';
+const SETTINGS_KEY = 'ati_form_settings_v3';
 const KEYS_1_KEY = 'ati_answer_keys_sesi_1_v1';
 const KEYS_2_KEY = 'ati_answer_keys_sesi_2_v1';
-const KEYS_3_KEY = 'ati_answer_keys_sesi_3_v2';
+const KEYS_3_KEY = 'ati_answer_keys_sesi_3_v3';
 const SUBMISSIONS_KEY = 'ati_submissions_v1';
 const DELETED_IDS_KEY = 'ati_deleted_submissions_v1';
 const CLEAR_TIMESTAMP_KEY = 'ati_cleared_at_v1';
@@ -34,7 +34,7 @@ export function loadSettings(): FormSettings {
         3: {
           ...DEFAULT_SETTINGS.sessions[3],
           ...(parsed.sessions?.[3] || {}),
-          totalQuestions: 150,
+          totalQuestions: 157,
           shuffleQuestions: false,
         },
       },
