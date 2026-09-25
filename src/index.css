@@ -1,0 +1,517 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap');
+
+:root {
+  --primary-color: #673ab7;
+  --primary-hover: #5e35b1;
+  --primary-light: #ede7f6;
+  --primary-border: #d1c4e9;
+  --bg-page: #f0ebf8;
+  --card-bg: #ffffff;
+  --text-main: #202124;
+  --text-secondary: #5f6368;
+  --text-muted: #80868b;
+  --border-color: #dadce0;
+  --success-color: #0f9d58;
+  --warning-color: #f4b400;
+  --danger-color: #d93025;
+  --radius-card: 10px;
+  --shadow-card: 0 1px 3px rgba(60, 64, 67, 0.12), 0 1px 2px rgba(60, 64, 67, 0.24);
+  --shadow-hover: 0 4px 12px rgba(60, 64, 67, 0.18);
+  --font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: 'Google Sans', 'Roboto', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.5;
+  padding-bottom: 80px;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #c5cae9;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* App Layout Container */
+.gform-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 16px 14px 60px 14px;
+}
+
+/* Card base style like Google Form */
+.gform-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.gform-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.gform-card.active {
+  border-left: 6px solid var(--primary-color);
+}
+
+/* Header Banner Card */
+.gform-header-card {
+  background: #ffffff;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.gform-header-stripe {
+  height: 10px;
+  background-color: var(--primary-color);
+  width: 100%;
+}
+
+.gform-header-body {
+  padding: 24px;
+}
+
+.gform-title {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.gform-org-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 16px;
+  margin-bottom: 12px;
+}
+
+.gform-description {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+/* Section Header Card */
+.gform-section-banner {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-top-left-radius: var(--radius-card);
+  border-top-right-radius: var(--radius-card);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gform-section-badge {
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* Sticky Timer Bar */
+.sticky-timer-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin: -16px -14px 16px -14px;
+  padding: 10px 18px;
+}
+
+.sticky-timer-content {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.timer-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 24px;
+  background: var(--primary-light);
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+}
+
+.timer-badge.warning {
+  background: #fde8e8;
+  color: var(--danger-color);
+  animation: pulse-danger 1s infinite;
+}
+
+@keyframes pulse-danger {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+.progress-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.progress-bar-bg {
+  width: 140px;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+/* Question Item */
+.question-card {
+  padding: 20px 24px;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.question-num-tag {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.question-num-badge {
+  background: #e8eaf6;
+  color: var(--primary-color);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.question-shuffled-info {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: #f1f3f4;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.question-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Radio Option Row */
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease-in-out;
+}
+
+.option-row:hover {
+  background-color: #f8f9fa;
+  border-color: #dadce0;
+}
+
+.option-row.selected {
+  background-color: var(--primary-light);
+  border-color: var(--primary-border);
+}
+
+.option-radio-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #757575;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.option-row.selected .option-radio-circle {
+  border-color: var(--primary-color);
+}
+
+.option-radio-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  transform: scale(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+.option-row.selected .option-radio-dot {
+  transform: scale(1);
+}
+
+.option-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-main);
+  flex: 1;
+}
+
+/* Pill / Button Options Mode for quick touch in Sesi 2 & Sesi 3 */
+.options-pill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.option-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border-color);
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.option-pill:hover {
+  background: #f8f9fa;
+  border-color: var(--primary-color);
+}
+
+.option-pill.selected {
+  background: var(--primary-color);
+  color: #ffffff;
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 6px rgba(103, 58, 183, 0.35);
+}
+
+.option-pill-sub {
+  font-size: 10px;
+  font-weight: 400;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+/* Quick Navigator Drawer / Panel */
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+  gap: 6px;
+  max-height: 240px;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+.nav-grid-btn {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.nav-grid-btn.answered {
+  background: var(--primary-color);
+  color: #ffffff;
+  border-color: var(--primary-color);
+}
+
+.nav-grid-btn.current {
+  outline: 2px solid var(--text-main);
+  outline-offset: 1px;
+}
+
+/* Floating Action Bar / Bottom Bar */
+.bottom-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-gform {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-heading);
+  letter-spacing: 0.25px;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+
+.btn-gform:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  box-shadow: 0 2px 6px rgba(60, 64, 67, 0.35);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: #f1f3f4;
+}
+
+/* Material Form Input */
+.gform-input-group {
+  margin-bottom: 20px;
+}
+
+.gform-input-label {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.gform-input-label .required {
+  color: var(--danger-color);
+  margin-left: 4px;
+}
+
+.gform-input {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background: #fafafa;
+}
+
+.gform-input:focus {
+  background: #ffffff;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .gform-container {
+    padding: 8px 10px 80px 10px;
+  }
+  .gform-header-body {
+    padding: 18px 16px;
+  }
+  .gform-title {
+    font-size: 22px;
+  }
+  .question-card {
+    padding: 16px;
+  }
+  .progress-bar-bg {
+    width: 80px;
+  }
+  .options-pill-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
