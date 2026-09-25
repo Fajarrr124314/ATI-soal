@@ -22,6 +22,8 @@ import {
   Check,
   AlertTriangle,
   Eye,
+  Move,
+  Sparkles,
 } from 'lucide-react';
 
 interface AdminModalProps {
@@ -63,6 +65,58 @@ export const AdminModal: React.FC<AdminModalProps> = ({
   const [submissions, setSubmissions] = useState<TestSubmission[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSubDetail, setSelectedSubDetail] = useState<TestSubmission | null>(null);
+
+  // Mode Atur Urutan Kunci Jawaban (Wobble & Drag-and-Drop)
+  const [isReordering, setIsReordering] = useState(false);
+  const [draggedKeyId, setDraggedKeyId] = useState<number | null>(null);
+  const [dragOverKeyId, setDragOverKeyId] = useState<number | null>(null);
+  const [selectedSwapKeyId, setSelectedSwapKeyId] = useState<number | null>(null);
+
+  const swapKeys = (id1: number, id2: number) => {
+    if (id1 === id2) return;
+    const currentSessionKeys = { ...currentKeys[activeKeySession] };
+    const temp = currentSessionKeys[id1];
+    currentSessionKeys[id1] = currentSessionKeys[id2];
+    currentSessionKeys[id2] = temp;
+
+    const updated = {
+      ...currentKeys,
+      [activeKeySession]: currentSessionKeys,
+    };
+    setCurrentKeys(updated);
+    saveAnswerKeys(activeKeySession, currentSessionKeys);
+    onUpdateAnswerKeys(updated);
+  };
+
+  const handleDragStart = (id: number) => {
+    setDraggedKeyId(id);
+  };
+
+  const handleDragOver = (e: React.DragEvent, id: number) => {
+    e.preventDefault();
+    if (dragOverKeyId !== id) {
+      setDragOverKeyId(id);
+    }
+  };
+
+  const handleDrop = (targetId: number) => {
+    if (draggedKeyId !== null && draggedKeyId !== targetId) {
+      swapKeys(draggedKeyId, targetId);
+    }
+    setDraggedKeyId(null);
+    setDragOverKeyId(null);
+  };
+
+  const handleClickBoxInReorder = (id: number) => {
+    if (selectedSwapKeyId === null) {
+      setSelectedSwapKeyId(id);
+    } else if (selectedSwapKeyId === id) {
+      setSelectedSwapKeyId(null);
+    } else {
+      swapKeys(selectedSwapKeyId, id);
+      setSelectedSwapKeyId(null);
+    }
+  };
 
   useEffect(() => {
     setFormSettings(settings);
@@ -704,16 +758,64 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       ))}
                     </div>
 
-                    <button
-                      onClick={handleResetKeys}
-                      className="btn-gform btn-secondary"
-                      style={{ padding: '6px 12px', fontSize: 12, color: 'var(--danger-color)', borderColor: '#fad2cf' }}
-                    >
-                      <RotateCcw size={14} /> Reset ke Kunci PT ATI Bawaan
-                    </button>
+                    <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsReordering(!isReordering);
+                          setSelectedSwapKeyId(null);
+                        }}
+                        className="btn-gform"
+                        style={{
+                          padding: '6px 14px',
+                          fontSize: 13,
+                          fontWeight: 600,
+                          backgroundColor: isReordering ? '#0f9d58' : 'var(--primary-light)',
+                          color: isReordering ? '#ffffff' : 'var(--primary-color)',
+                          border: isReordering ? '1px solid #0f9d58' : '1px solid var(--primary-border)',
+                          boxShadow: isReordering ? '0 2px 8px rgba(15,157,88,0.35)' : 'none',
+                          transition: 'all 0.2s',
+                        }}
+                      >
+                        {isReordering ? <Check size={15} /> : <Move size={15} />}
+                        <span>{isReordering ? 'Selesai Atur & Simpan' : 'Atur Urutan (Geser)'}</span>
+                      </button>
+
+                      <button
+                        onClick={handleResetKeys}
+                        className="btn-gform btn-secondary"
+                        style={{ padding: '6px 12px', fontSize: 12, color: 'var(--danger-color)', borderColor: '#fad2cf' }}
+                      >
+                        <RotateCcw size={14} /> Reset ke Kunci PT ATI Bawaan
+                      </button>
+                    </div>
                   </div>
 
-                  {activeKeySession === 3 && (
+                  {/* Banner Mode Goyang / Atur Urutan */}
+                  {isReordering && (
+                    <div
+                      style={{
+                        padding: '10px 14px',
+                        borderRadius: 8,
+                        background: 'var(--primary-light)',
+                        border: '1.5px dashed var(--primary-color)',
+                        color: 'var(--primary-color)',
+                        fontSize: 13,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                        marginBottom: 14,
+                        animation: 'pulse 1.5s infinite alternate',
+                      }}
+                    >
+                      <Sparkles size={18} style={{ flexShrink: 0 }} />
+                      <span>
+                        <strong>Mode Atur Urutan Aktif! (Kotak Bergoyang)</strong>: Geser (drag &amp; drop) kotak ke nomor lain, atau klik kotak pertama lalu klik kotak tujuan untuk menukar urutan kunci jawabannya.
+                      </span>
+                    </div>
+                  )}
+
+                  {activeKeySession === 3 && !isReordering && (
                     <div
                       style={{
                         padding: 10,
@@ -740,10 +842,10 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     style={{
                       display: 'grid',
                       gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
-                      gap: 8,
+                      gap: 10,
                       maxHeight: '52vh',
                       overflowY: 'auto',
-                      padding: 4,
+                      padding: 6,
                     }}
                   >
                     {(() => {
@@ -753,70 +855,90 @@ export const AdminModal: React.FC<AdminModalProps> = ({
 
                       for (let i = 1; i <= total; i++) {
                         const currentVal = sessionKeys[i] || '';
+                        const isSelectedSwap = selectedSwapKeyId === i;
+                        const isDragged = draggedKeyId === i;
+                        const isDragOver = dragOverKeyId === i;
+
                         items.push(
                           <div
                             key={i}
+                            draggable={isReordering}
+                            onDragStart={() => isReordering && handleDragStart(i)}
+                            onDragOver={(e) => isReordering && handleDragOver(e, i)}
+                            onDrop={() => isReordering && handleDrop(i)}
+                            onClick={() => isReordering && handleClickBoxInReorder(i)}
+                            className={`answer-key-box ${isReordering ? 'jiggle-box' : ''} ${isDragged ? 'dragging' : ''} ${isDragOver ? 'drag-over' : ''} ${isSelectedSwap ? 'selected-swap' : ''}`}
                             style={{
-                              padding: 8,
-                              borderRadius: 6,
-                              border: '1px solid #dadce0',
-                              backgroundColor: '#ffffff',
+                              padding: '8px 10px',
+                              borderRadius: 8,
+                              border: isSelectedSwap ? '2px solid #1a73e8' : '1px solid #dadce0',
+                              backgroundColor: isSelectedSwap ? '#e8f0fe' : '#ffffff',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'space-between',
                               gap: 6,
+                              cursor: isReordering ? 'grab' : 'default',
+                              transition: 'all 0.15s ease',
+                              position: 'relative',
                             }}
+                            title={isReordering ? `Klik atau geser soal #${i} untuk menukar kunci` : undefined}
                           >
-                            <span style={{ fontSize: 12, fontWeight: 700, color: '#5f6368' }}>#{i}</span>
-                            {activeKeySession === 1 ? (
-                              <input
-                                type="text"
-                                maxLength={3}
-                                value={currentVal}
-                                onChange={(e) => handleKeyChange(1, i, e.target.value)}
-                                style={{
-                                  width: 44,
-                                  textAlign: 'center',
-                                  padding: '4px 2px',
-                                  fontSize: 13,
-                                  fontWeight: 700,
-                                  borderRadius: 4,
-                                  border: '1px solid #ced4da',
-                                }}
-                              />
-                            ) : activeKeySession === 2 ? (
-                              <select
-                                value={currentVal}
-                                onChange={(e) => handleKeyChange(2, i, e.target.value)}
-                                style={{
-                                  padding: '4px',
-                                  fontSize: 13,
-                                  fontWeight: 700,
-                                  borderRadius: 4,
-                                  border: '1px solid #ced4da',
-                                }}
-                              >
-                                <option value="B">B</option>
-                                <option value="S">S</option>
-                              </select>
-                            ) : (
-                              <select
-                                value={currentVal}
-                                onChange={(e) => handleKeyChange(3, i, e.target.value)}
-                                style={{
-                                  padding: '4px',
-                                  fontSize: 12,
-                                  fontWeight: 700,
-                                  borderRadius: 4,
-                                  border: '1px solid #ced4da',
-                                }}
-                              >
-                                <option value="SS">SS</option>
-                                <option value="S">S</option>
-                                <option value="TS">TS</option>
-                                <option value="STS">STS</option>
-                              </select>
-                            )}
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                              {isReordering && <Move size={12} color="var(--primary-color)" style={{ opacity: 0.8 }} />}
+                              <span style={{ fontSize: 12, fontWeight: 700, color: '#5f6368' }}>#{i}</span>
+                            </div>
+
+                            <div style={{ pointerEvents: isReordering ? 'none' : 'auto' }}>
+                              {activeKeySession === 1 ? (
+                                <input
+                                  type="text"
+                                  maxLength={3}
+                                  value={currentVal}
+                                  onChange={(e) => handleKeyChange(1, i, e.target.value)}
+                                  style={{
+                                    width: 44,
+                                    textAlign: 'center',
+                                    padding: '4px 2px',
+                                    fontSize: 13,
+                                    fontWeight: 700,
+                                    borderRadius: 4,
+                                    border: '1px solid #ced4da',
+                                  }}
+                                />
+                              ) : activeKeySession === 2 ? (
+                                <select
+                                  value={currentVal}
+                                  onChange={(e) => handleKeyChange(2, i, e.target.value)}
+                                  style={{
+                                    padding: '4px',
+                                    fontSize: 13,
+                                    fontWeight: 700,
+                                    borderRadius: 4,
+                                    border: '1px solid #ced4da',
+                                  }}
+                                >
+                                  <option value="B">B</option>
+                                  <option value="S">S</option>
+                                </select>
+                              ) : (
+                                <select
+                                  value={currentVal}
+                                  onChange={(e) => handleKeyChange(3, i, e.target.value)}
+                                  style={{
+                                    padding: '4px',
+                                    fontSize: 12,
+                                    fontWeight: 700,
+                                    borderRadius: 4,
+                                    border: '1px solid #ced4da',
+                                  }}
+                                >
+                                  <option value="SS">SS</option>
+                                  <option value="S">S</option>
+                                  <option value="TS">TS</option>
+                                  <option value="STS">STS</option>
+                                </select>
+                              )}
+                            </div>
                           </div>
                         );
                       }
