@@ -9,20 +9,18 @@ import {
   clearAllSubmissions,
   exportSubmissionsToExcel,
 } from '../services/storage';
-import { getSupabaseClient } from '../services/supabase';
+import { fetchSubmissionsFromSupabase } from '../services/supabase';
 import {
   X,
   Lock,
   Sliders,
   KeyRound,
   Users,
-  Database,
   Download,
   Trash2,
   RotateCcw,
   Check,
   AlertTriangle,
-  Copy,
   Eye,
 } from 'lucide-react';
 
@@ -54,7 +52,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passwordInput, setPasswordInput] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [activeTab, setActiveTab] = useState<'settings' | 'keys' | 'participants' | 'supabase'>('settings');
+  const [activeTab, setActiveTab] = useState<'settings' | 'keys' | 'participants'>('settings');
 
   // Form settings state
   const [formSettings, setFormSettings] = useState<FormSettings>(settings);
@@ -66,15 +64,29 @@ export const AdminModal: React.FC<AdminModalProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSubDetail, setSelectedSubDetail] = useState<TestSubmission | null>(null);
 
-  // Supabase test state
-  const [supabaseTestStatus, setSupabaseTestStatus] = useState<string | null>(null);
-  const [copySuccess, setCopySuccess] = useState(false);
-
   useEffect(() => {
     setFormSettings(settings);
     setCurrentKeys(answerKeys);
     if (isOpen) {
-      setSubmissions(loadSubmissions());
+      const local = loadSubmissions();
+      setSubmissions(local);
+
+      // Fetch from Supabase in background if configured
+      if (settings.supabaseUrl && settings.supabaseAnonKey) {
+        fetchSubmissionsFromSupabase(settings.supabaseUrl, settings.supabaseAnonKey).then((cloud) => {
+          if (cloud && cloud.length > 0) {
+            // Merge unique by id
+            const existingIds = new Set(local.map((s) => s.id));
+            const merged = [...local];
+            for (const c of cloud) {
+              if (!existingIds.has(c.id)) {
+                merged.push(c);
+              }
+            }
+            setSubmissions(merged);
+          }
+        });
+      }
     }
   }, [isOpen, settings, answerKeys]);
 
@@ -132,64 +144,6 @@ export const AdminModal: React.FC<AdminModalProps> = ({
       setSubmissions([]);
       setSelectedSubDetail(null);
     }
-  };
-
-  const handleTestSupabase = async () => {
-    if (!formSettings.supabaseUrl || !formSettings.supabaseAnonKey) {
-      setSupabaseTestStatus('error: Mohon isi Project URL dan Anon Key terlebih dahulu.');
-      return;
-    }
-    setSupabaseTestStatus('loading...');
-    try {
-      const client = getSupabaseClient(formSettings.supabaseUrl, formSettings.supabaseAnonKey);
-      if (!client) {
-        setSupabaseTestStatus('error: Konfigurasi Supabase tidak valid.');
-        return;
-      }
-      const { error } = await client.from('submissions').select('id').limit(1);
-      if (error) {
-        setSupabaseTestStatus(`error: Tabel 'submissions' belum siap di Supabase. Silakan jalankan skrip SQL di bawah pada menu SQL Editor Supabase! (${error.message})`);
-      } else {
-        setSupabaseTestStatus('success: Terkoneksi sempurna ke database Supabase!');
-      }
-    } catch (e: any) {
-      setSupabaseTestStatus(`error: ${e.message}`);
-    }
-  };
-
-  const supabaseSql = `-- Salin dan tempel skrip ini di SQL Editor Supabase Anda:
-create table if not exists submissions (
-  id text primary key,
-  participant_name text not null,
-  participant_number text,
-  institution text,
-  submitted_at timestamp with time zone default now(),
-  duration_seconds_used integer,
-  session1_score numeric,
-  session1_correct integer,
-  session1_total integer,
-  session2_score numeric,
-  session2_correct integer,
-  session2_total integer,
-  session3_score numeric,
-  session3_correct integer,
-  session3_total integer,
-  total_score numeric,
-  total_correct integer,
-  total_questions integer,
-  answers_json jsonb
-);
-
--- Atur kebijakan keamanan (RLS) agar form publik bisa menyimpan jawaban
-alter table submissions enable row level security;
-create policy "Izinkan publik insert jawaban" on submissions for insert with check (true);
-create policy "Izinkan publik membaca data" on submissions for select using (true);
-`;
-
-  const copySqlToClipboard = () => {
-    navigator.clipboard.writeText(supabaseSql);
-    setCopySuccess(true);
-    setTimeout(() => setCopySuccess(false), 2000);
   };
 
   const filteredSubmissions = submissions.filter((s) =>
@@ -385,25 +339,6 @@ create policy "Izinkan publik membaca data" on submissions for select using (tru
                 }}
               >
                 <Users size={16} /> Data Peserta ({submissions.length})
-              </button>
-              <button
-                onClick={() => setActiveTab('supabase')}
-                style={{
-                  padding: '12px 18px',
-                  border: 'none',
-                  background: activeTab === 'supabase' ? '#ffffff' : 'transparent',
-                  borderBottom: activeTab === 'supabase' ? `3px solid var(--primary-color)` : 'none',
-                  fontWeight: 600,
-                  fontSize: 14,
-                  color: activeTab === 'supabase' ? 'var(--primary-color)' : '#5f6368',
-                  cursor: 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                <Database size={16} /> Supabase Cloud (Free)
               </button>
             </div>
 
@@ -607,18 +542,6 @@ create policy "Izinkan publik membaca data" on submissions for select using (tru
                           style={{ width: 18, height: 18 }}
                         />
                         <span>Tampilkan Skor di Akhir kepada Peserta</span>
-                      </label>
-                    </div>
-
-                    <div style={{ background: '#f8f9fa', padding: 14, borderRadius: 8, border: '1px solid #dadce0' }}>
-                      <label style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer', fontSize: 14 }}>
-                        <input
-                          type="checkbox"
-                          checked={formSettings.allowReviewAnswers}
-                          onChange={(e) => setFormSettings({ ...formSettings, allowReviewAnswers: e.target.checked })}
-                          style={{ width: 18, height: 18 }}
-                        />
-                        <span>Izinkan Peserta Melihat Rincian Kunci Jawaban</span>
                       </label>
                     </div>
 
@@ -965,111 +888,6 @@ create policy "Izinkan publik membaca data" on submissions for select using (tru
                       </p>
                     </div>
                   )}
-                </div>
-              )}
-
-              {/* TAB 4: SUPABASE CLOUD (FREE) */}
-              {activeTab === 'supabase' && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-                  <div
-                    style={{
-                      padding: 14,
-                      borderRadius: 8,
-                      backgroundColor: '#e8f0fe',
-                      border: '1px solid #d2e3fc',
-                      fontSize: 13,
-                      color: '#1a73e8',
-                    }}
-                  >
-                    <strong>💡 Supabase Free Tier Integration:</strong>
-                    <p style={{ marginTop: 4 }}>
-                      Form ini sudah dirancang untuk berjalan 100% di browser lokal (LocalStorage). Jika Anda ingin jawaban peserta otomatis terkirim dan tersimpan di database online (Supabase gratis), masukkan Project URL dan Anon Key Anda di bawah ini!
-                    </p>
-                  </div>
-
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 14 }}>
-                    <div>
-                      <label className="gform-input-label">Supabase Project URL</label>
-                      <input
-                        type="text"
-                        className="gform-input"
-                        placeholder="https://xyzcompany.supabase.co"
-                        value={formSettings.supabaseUrl}
-                        onChange={(e) => setFormSettings({ ...formSettings, supabaseUrl: e.target.value })}
-                      />
-                    </div>
-                    <div>
-                      <label className="gform-input-label">Supabase Anon Key</label>
-                      <input
-                        type="password"
-                        className="gform-input"
-                        placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-                        value={formSettings.supabaseAnonKey}
-                        onChange={(e) => setFormSettings({ ...formSettings, supabaseAnonKey: e.target.value })}
-                      />
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <button
-                      onClick={handleTestSupabase}
-                      className="btn-gform btn-secondary"
-                      style={{ padding: '8px 16px', fontSize: 13 }}
-                    >
-                      Uji Koneksi Supabase
-                    </button>
-                    <button
-                      onClick={handleSaveSettings}
-                      className="btn-gform btn-primary"
-                      style={{ padding: '8px 16px', fontSize: 13 }}
-                    >
-                      Simpan Kredensial
-                    </button>
-                  </div>
-
-                  {supabaseTestStatus && (
-                    <div
-                      style={{
-                        padding: 10,
-                        borderRadius: 6,
-                        fontSize: 13,
-                        backgroundColor: supabaseTestStatus.startsWith('success') ? '#e6f4ea' : '#fce8e6',
-                        color: supabaseTestStatus.startsWith('success') ? '#0f9d58' : '#d93025',
-                      }}
-                    >
-                      {supabaseTestStatus}
-                    </div>
-                  )}
-
-                  {/* SQL Setup Instruction */}
-                  <div style={{ background: '#f8f9fa', padding: 16, borderRadius: 8, border: '1px solid #dadce0' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                      <span style={{ fontWeight: 700, fontSize: 13 }}>
-                        Skrip SQL Supabase (Jalankan di Supabase &gt; SQL Editor):
-                      </span>
-                      <button
-                        onClick={copySqlToClipboard}
-                        className="btn-gform btn-secondary"
-                        style={{ padding: '4px 10px', fontSize: 12, gap: 4 }}
-                      >
-                        {copySuccess ? <Check size={14} color="#0f9d58" /> : <Copy size={14} />}
-                        <span>{copySuccess ? 'Tersalin!' : 'Salin SQL'}</span>
-                      </button>
-                    </div>
-                    <pre
-                      style={{
-                        background: '#202124',
-                        color: '#f1f3f4',
-                        padding: 12,
-                        borderRadius: 6,
-                        fontSize: 11,
-                        overflowX: 'auto',
-                        fontFamily: 'Consolas, monospace',
-                      }}
-                    >
-                      {supabaseSql}
-                    </pre>
-                  </div>
                 </div>
               )}
             </div>

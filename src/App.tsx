@@ -463,7 +463,6 @@ export const App: React.FC = () => {
         <ResultView
           submission={completedSubmission}
           settings={settings}
-          answerKeys={answerKeys}
           onRestart={handleRestart}
         />
       )}
@@ -487,6 +486,27 @@ export const App: React.FC = () => {
         answerKeys={answerKeys}
         onUpdateAnswerKeys={setAnswerKeys}
       />
+
+      {/* Footer */}
+      <footer style={{ marginTop: 40, paddingBottom: 24, textAlign: 'center', color: '#80868b', fontSize: 12 }}>
+        <div>Formulir Evaluasi Mandiri • {settings.organization}</div>
+        {(currentStep === 0 || currentStep === 4) && (
+          <button
+            onClick={() => setIsAdminOpen(true)}
+            style={{
+              marginTop: 8,
+              background: 'transparent',
+              border: 'none',
+              color: '#5f6368',
+              fontSize: 12,
+              cursor: 'pointer',
+              textDecoration: 'underline',
+            }}
+          >
+            Akses Panel Admin
+          </button>
+        )}
+      </footer>
     </div>
   );
 };

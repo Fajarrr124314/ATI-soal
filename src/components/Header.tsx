@@ -25,28 +25,32 @@ export const Header: React.FC<HeaderProps> = ({ settings, onOpenAdmin, currentSt
             <h1 className="gform-title">{settings.title}</h1>
           </div>
 
-          <button
-            onClick={onOpenAdmin}
-            title="Buka Pengaturan Admin"
-            style={{
-              background: '#f1f3f4',
-              border: 'none',
-              borderRadius: '50%',
-              width: 40,
-              height: 40,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              cursor: 'pointer',
-              color: '#5f6368',
-              transition: 'background 0.2s, transform 0.2s',
-              flexShrink: 0,
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = '#e8eaed')}
-            onMouseLeave={(e) => (e.currentTarget.style.background = '#f1f3f4')}
-          >
-            <Settings size={20} />
-          </button>
+          {(currentStep === 0 || currentStep === 4) && (
+            <button
+              onClick={onOpenAdmin}
+              title="Akses Pengaturan Admin"
+              style={{
+                background: '#ffffff',
+                border: '1px solid #dadce0',
+                borderRadius: '6px',
+                padding: '6px 12px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                cursor: 'pointer',
+                color: '#5f6368',
+                fontSize: 12,
+                fontWeight: 600,
+                flexShrink: 0,
+                transition: 'background 0.2s',
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = '#f1f3f4')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = '#ffffff')}
+            >
+              <Settings size={14} />
+              <span>Admin</span>
+            </button>
+          )}
         </div>
 
         <p className="gform-description">{settings.description}</p>

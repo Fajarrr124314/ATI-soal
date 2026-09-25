@@ -19,7 +19,12 @@ export function loadSettings(): FormSettings {
     const raw = localStorage.getItem(SETTINGS_KEY);
     if (!raw) return DEFAULT_SETTINGS;
     const parsed = JSON.parse(raw);
-    return { ...DEFAULT_SETTINGS, ...parsed };
+    return {
+      ...DEFAULT_SETTINGS,
+      ...parsed,
+      supabaseUrl: parsed.supabaseUrl || DEFAULT_SETTINGS.supabaseUrl,
+      supabaseAnonKey: parsed.supabaseAnonKey || DEFAULT_SETTINGS.supabaseAnonKey,
+    };
   } catch {
     return DEFAULT_SETTINGS;
   }

@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import type { TestSubmission, FormSettings } from '../types';
 import {
   CheckCircle,
   Trophy,
-  Award,
-  ChevronDown,
-  ChevronUp,
   RefreshCw,
   Clock,
   User,
@@ -15,22 +12,14 @@ import {
 interface ResultViewProps {
   submission: TestSubmission;
   settings: FormSettings;
-  answerKeys: {
-    1: Record<number, string>;
-    2: Record<number, string>;
-    3: Record<number, string>;
-  };
   onRestart: () => void;
 }
 
 export const ResultView: React.FC<ResultViewProps> = ({
   submission,
   settings,
-  answerKeys,
   onRestart,
 }) => {
-  const [showReview, setShowReview] = useState(false);
-  const [selectedReviewSession, setSelectedReviewSession] = useState<1 | 2 | 3>(1);
 
   useEffect(() => {
     // Fire festive confetti
@@ -249,109 +238,6 @@ export const ResultView: React.FC<ResultViewProps> = ({
               </div>
             </div>
           </div>
-
-          {/* Toggle Review Jawaban */}
-          {settings.allowReviewAnswers && (
-            <div style={{ marginTop: 24 }}>
-              <button
-                type="button"
-                onClick={() => setShowReview(!showReview)}
-                className="btn-gform btn-secondary"
-                style={{ width: '100%', justifyContent: 'space-between', padding: '12px 18px' }}
-              >
-                <span style={{ display: 'flex', alignItems: 'center', gap: 8, fontWeight: 600 }}>
-                  <Award size={18} color={settings.themeColor} />
-                  {showReview ? 'Sembunyikan Rincian Jawaban' : 'Lihat Rincian Jawaban & Kunci'}
-                </span>
-                {showReview ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-              </button>
-
-              {showReview && (
-                <div style={{ marginTop: 16 }}>
-                  {/* Tab Selector Sesi Review */}
-                  <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
-                    {[1, 2, 3].map((sess) => (
-                      <button
-                        key={sess}
-                        className="btn-gform"
-                        style={{
-                          flex: 1,
-                          fontSize: 13,
-                          padding: '8px 12px',
-                          backgroundColor: selectedReviewSession === sess ? settings.themeColor : '#f1f3f4',
-                          color: selectedReviewSession === sess ? '#ffffff' : '#333333',
-                        }}
-                        onClick={() => setSelectedReviewSession(sess as 1 | 2 | 3)}
-                      >
-                        Sesi {sess}
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Review Grid */}
-                  <div
-                    style={{
-                      maxHeight: 380,
-                      overflowY: 'auto',
-                      border: '1px solid #dadce0',
-                      borderRadius: 8,
-                      padding: 12,
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))',
-                      gap: 8,
-                      backgroundColor: '#fafafa',
-                    }}
-                  >
-                    {(() => {
-                      const sessKeys = answerKeys[selectedReviewSession];
-                      const userAnswers =
-                        selectedReviewSession === 1
-                          ? submission.session1.answers
-                          : selectedReviewSession === 2
-                          ? submission.session2.answers
-                          : submission.session3.answers;
-                      const totalSess =
-                        selectedReviewSession === 1 ? 20 : selectedReviewSession === 2 ? 45 : 157;
-
-                      const items = [];
-                      for (let i = 1; i <= totalSess; i++) {
-                        const userAns = userAnswers[i] || '-';
-                        const key = sessKeys[i] || '';
-                        const isCorrect = key.includes('/')
-                          ? key.split('/').includes(userAns)
-                          : userAns === key;
-
-                        items.push(
-                          <div
-                            key={i}
-                            style={{
-                              padding: '8px 10px',
-                              borderRadius: 6,
-                              backgroundColor: isCorrect ? '#e6f4ea' : '#fce8e6',
-                              border: `1px solid ${isCorrect ? '#34a853' : '#ea4335'}`,
-                              fontSize: 12,
-                            }}
-                          >
-                            <div style={{ fontWeight: 700, color: '#333' }}>No. {i}</div>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
-                              <span>
-                                Anda:{' '}
-                                <strong style={{ color: isCorrect ? '#0f9d58' : '#d93025' }}>{userAns}</strong>
-                              </span>
-                              <span>
-                                Kunci: <strong>{key}</strong>
-                              </span>
-                            </div>
-                          </div>
-                        );
-                      }
-                      return items;
-                    })()}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
         </div>
       )}
 

@@ -38,8 +38,9 @@ export const DEFAULT_SETTINGS: FormSettings = {
       optionsTemplate: ['SS', 'S', 'TS', 'STS'],
     },
   },
-  supabaseUrl: '',
-  supabaseAnonKey: '',
+  supabaseUrl: 'https://hopzitvukxiajykhueqf.supabase.co',
+  supabaseAnonKey:
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhvcHppdHZ1a3hpYWp5a2h1ZXFmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAyODIxNjgsImV4cCI6MjEwNTg1ODE2OH0.iBatq5Gr7JSi6T9rW2HyD2Su0uokwsWIl72rCBhgENA',
 };
 
 // Kunci Jawaban Default PT ATI dari Lembar Jawaban
