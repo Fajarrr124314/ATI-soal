@@ -98,7 +98,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
       setIsAuthenticated(true);
       setPasswordError('');
     } else {
-      setPasswordError('Password salah. Silakan coba lagi (Default: admin123)');
+      setPasswordError('Password salah. Silakan periksa kembali kata sandi Anda.');
     }
   };
 
@@ -246,7 +246,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
             </div>
             <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 8 }}>Masukkan Password Admin</h3>
             <p style={{ fontSize: 13, color: '#5f6368', marginBottom: 20 }}>
-              Password bawaan awal adalah <code>admin123</code>
+              Masukkan kata sandi administrator untuk mengelola sistem
             </p>
             <form onSubmit={handleLogin}>
               <input
