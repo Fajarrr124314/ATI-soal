@@ -83,7 +83,9 @@ export const Header: React.FC<HeaderProps> = ({ settings, onOpenAdmin, currentSt
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <FileCheck size={16} color={settings.themeColor} />
-              <span>Total 222 Pertanyaan (20 + 45 + 157)</span>
+              <span>
+                Total {settings.sessions[1].totalQuestions + settings.sessions[2].totalQuestions + settings.sessions[3].totalQuestions} Pertanyaan ({settings.sessions[1].totalQuestions} + {settings.sessions[2].totalQuestions} + {settings.sessions[3].totalQuestions})
+              </span>
             </div>
           </div>
         )}

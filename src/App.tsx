@@ -20,7 +20,7 @@ import { QuestionCard } from './components/QuestionCard';
 import { QuickNavigator } from './components/QuickNavigator';
 import { ResultView } from './components/ResultView';
 import { AdminModal } from './components/AdminModal';
-import { ArrowRight, ArrowLeft, CheckCircle, AlertTriangle } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle, FileText, Download } from 'lucide-react';
 
 export const App: React.FC = () => {
   // Global configuration & keys
@@ -190,9 +190,13 @@ export const App: React.FC = () => {
       }
     }
 
+    const totalQ1 = settings.sessions[1].totalQuestions || 20;
+    const totalQ2 = settings.sessions[2].totalQuestions || 45;
+    const totalQ3 = settings.sessions[3].totalQuestions || 150;
+
     // Calculate Sesi 3
     let correct3 = 0;
-    for (let i = 1; i <= 157; i++) {
+    for (let i = 1; i <= totalQ3; i++) {
       const ans = answersSession3[i];
       const key = answerKeys[3][i];
       if (key && ans && ans === key) {
@@ -201,33 +205,33 @@ export const App: React.FC = () => {
     }
 
     const totalCorrect = correct1 + correct2 + correct3;
-    const totalQuestions = 20 + 45 + 157; // 222
+    const totalQuestions = totalQ1 + totalQ2 + totalQ3;
     const totalPercent = (totalCorrect / totalQuestions) * 100;
 
     const res1: SessionResult = {
       session: 1,
-      totalQuestions: 20,
+      totalQuestions: totalQ1,
       answeredCount: Object.keys(answersSession1).length,
       correctCount: correct1,
-      scorePercentage: (correct1 / 20) * 100,
+      scorePercentage: (correct1 / totalQ1) * 100,
       answers: answersSession1,
     };
 
     const res2: SessionResult = {
       session: 2,
-      totalQuestions: 45,
+      totalQuestions: totalQ2,
       answeredCount: Object.keys(answersSession2).length,
       correctCount: correct2,
-      scorePercentage: (correct2 / 45) * 100,
+      scorePercentage: (correct2 / totalQ2) * 100,
       answers: answersSession2,
     };
 
     const res3: SessionResult = {
       session: 3,
-      totalQuestions: 157,
+      totalQuestions: totalQ3,
       answeredCount: Object.keys(answersSession3).length,
       correctCount: correct3,
-      scorePercentage: (correct3 / 157) * 100,
+      scorePercentage: (correct3 / totalQ3) * 100,
       answers: answersSession3,
     };
 
@@ -355,25 +359,50 @@ export const App: React.FC = () => {
                 {settings.sessions[currentSessionId].description}
               </p>
 
-              {currentStep === 3 && settings.sessions[3].shuffleQuestions && (
+              {currentStep === 3 && (
                 <div
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: 8,
-                    marginTop: 12,
-                    padding: '8px 12px',
-                    borderRadius: 6,
-                    backgroundColor: 'var(--primary-light)',
-                    color: settings.themeColor,
+                    justifyContent: 'space-between',
+                    flexWrap: 'wrap',
+                    gap: 12,
+                    marginTop: 14,
+                    padding: '12px 16px',
+                    borderRadius: 8,
+                    backgroundColor: '#f0fdf4',
+                    border: '1px solid #bbf7d0',
+                    color: '#166534',
                     fontSize: 13,
-                    fontWeight: 500,
                   }}
                 >
-                  <AlertTriangle size={16} />
-                  <span>
-                    Urutan pertanyaan diacak khusus untuk melatih fokus Anda. Tetap perhatikan nomor soal dengan teliti!
-                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, flex: 1 }}>
+                    <FileText size={20} style={{ flexShrink: 0, color: '#16a34a' }} />
+                    <span>
+                      <strong>Lembar Jawaban Sesi 3 (150 Butir)</strong>: Bacalah nomor soal pada <strong>Dokumen Soal Sesi 3</strong>, lalu pilih respon Anda di bawah ini (SS, S, TS, STS).
+                    </span>
+                  </div>
+                  <a
+                    href="/DOKUMEN_SOAL_SESI_3.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    download="DOKUMEN_SOAL_SESI_3.pdf"
+                    className="btn-gform"
+                    style={{
+                      padding: '7px 14px',
+                      fontSize: 12,
+                      fontWeight: 600,
+                      backgroundColor: '#16a34a',
+                      color: '#ffffff',
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 6,
+                      borderRadius: 6,
+                    }}
+                  >
+                    <Download size={14} /> Unduh / Buka Dokumen Soal (PDF)
+                  </a>
                 </div>
               )}
             </div>

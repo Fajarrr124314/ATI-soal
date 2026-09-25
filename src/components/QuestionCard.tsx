@@ -34,11 +34,10 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
     }
     if (session === 3) {
       const descriptions: Record<string, string> = {
-        SS: 'Sangat Setuju',
-        S: 'Setuju',
-        TS: 'Tidak Setuju',
-        STS: 'Sangat Tidak Setuju',
-        STD: 'Sangat Tidak Setuju',
+        SS: 'Sangat Sesuai',
+        S: 'Sesuai',
+        TS: 'Tidak Sesuai',
+        STS: 'Sangat Tidak Sesuai',
       };
       return (
         <div style={{ textAlign: 'center' }}>

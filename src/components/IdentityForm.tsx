@@ -101,7 +101,7 @@ export const IdentityForm: React.FC<IdentityFormProps> = ({ settings, onStart })
             </div>
             <div style={{ fontSize: 13, color: '#333', marginTop: 4 }}>Skala Respon (SS / S / TS / STS)</div>
             <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
-              <strong>157 Soal</strong> • {settings.sessions[3].durationMinutes} Menit
+              <strong>{settings.sessions[3].totalQuestions} Soal</strong> • {settings.sessions[3].durationMinutes} Menit
             </div>
           </div>
         </div>

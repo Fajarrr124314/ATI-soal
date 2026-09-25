@@ -523,7 +523,9 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                       </div>
 
                       <div>
-                        <label style={{ fontSize: 13, fontWeight: 600 }}>Sesi 3 (157 Soal)</label>
+                        <label style={{ fontSize: 13, fontWeight: 600 }}>
+                          Sesi 3 ({formSettings.sessions[3].totalQuestions} Soal)
+                        </label>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 4 }}>
                           <input
                             type="number"
@@ -758,7 +760,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           }}
                           onClick={() => setActiveKeySession(s as 1 | 2 | 3)}
                         >
-                          Sesi {s} ({s === 1 ? '20 Soal' : s === 2 ? '45 Soal' : '157 Soal'})
+                          Sesi {s} ({formSettings.sessions[s as 1 | 2 | 3]?.totalQuestions || 0} Soal)
                         </button>
                       ))}
                     </div>
@@ -823,22 +825,69 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                   {activeKeySession === 3 && !isReordering && (
                     <div
                       style={{
-                        padding: 10,
-                        borderRadius: 6,
-                        backgroundColor: '#e8f0fe',
-                        border: '1px solid #d2e3fc',
-                        fontSize: 12,
-                        color: '#1a73e8',
+                        padding: 12,
+                        borderRadius: 8,
+                        backgroundColor: '#f8fafc',
+                        border: '1px solid #e2e8f0',
                         marginBottom: 14,
                         display: 'flex',
-                        alignItems: 'center',
-                        gap: 8,
+                        flexDirection: 'column',
+                        gap: 10,
                       }}
                     >
-                      <AlertTriangle size={16} style={{ flexShrink: 0 }} />
-                      <span>
-                        Info: Kunci Jawaban Sesi 3 telah dipetakan lengkap sesuai tabel spreadsheet PT ATI (1-157). Anda dapat mengubah kunci nomor apa saja langsung pada kolom di bawah.
-                      </span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, color: '#475569' }}>
+                        <AlertTriangle size={16} style={{ flexShrink: 0, color: '#0284c7' }} />
+                        <span>
+                          <strong>Dokumen Resmi Sesi 3 (150 Butir Teracak):</strong> Telah disiapkan dokumen PDF terpisah untuk lembar soal (tanpa jawaban) dan dokumen PDF kunci jawaban resmi penguji.
+                        </span>
+                      </div>
+                      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                        <a
+                          href="/DOKUMEN_SOAL_SESI_3.pdf"
+                          download="DOKUMEN_SOAL_SESI_3.pdf"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn-gform"
+                          style={{
+                            padding: '6px 12px',
+                            fontSize: 12,
+                            fontWeight: 600,
+                            backgroundColor: '#ffffff',
+                            color: '#1e293b',
+                            border: '1px solid #cbd5e1',
+                            textDecoration: 'none',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 6,
+                            borderRadius: 6,
+                          }}
+                        >
+                          <Download size={14} color="#0284c7" /> Download PDF Soal Sesi 3 (Acak)
+                        </a>
+
+                        <a
+                          href="/DOKUMEN_KUNCI_JAWABAN_SESI_3.pdf"
+                          download="DOKUMEN_KUNCI_JAWABAN_SESI_3.pdf"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="btn-gform"
+                          style={{
+                            padding: '6px 12px',
+                            fontSize: 12,
+                            fontWeight: 600,
+                            backgroundColor: '#f5f3ff',
+                            color: '#6d28d9',
+                            border: '1px solid #ddd6fe',
+                            textDecoration: 'none',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 6,
+                            borderRadius: 6,
+                          }}
+                        >
+                          <Download size={14} color="#7c3aed" /> Download PDF Kunci Jawaban Sesi 3
+                        </a>
+                      </div>
                     </div>
                   )}
 
@@ -854,7 +903,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     }}
                   >
                     {(() => {
-                      const total = activeKeySession === 1 ? 20 : activeKeySession === 2 ? 45 : 157;
+                      const total = formSettings.sessions[activeKeySession]?.totalQuestions || 20;
                       const sessionKeys = currentKeys[activeKeySession];
                       const items = [];
 

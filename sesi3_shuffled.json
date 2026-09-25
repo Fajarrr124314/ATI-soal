@@ -1,0 +1,902 @@
+[
+  {
+    "new_num": 1,
+    "orig_num": 114,
+    "text": "Saya menganggap keterbatasan bagus dan baik.",
+    "answer": "S"
+  },
+  {
+    "new_num": 2,
+    "orig_num": 53,
+    "text": "Saya mengerjakan berbagai hal mendekati tenggang waktu.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 3,
+    "orig_num": 46,
+    "text": "Saya membuat perencanaan dan mampu membuat rencana tersebut.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 4,
+    "orig_num": 47,
+    "text": "Saya adalah orang yang berfokus pada tujuan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 5,
+    "orig_num": 118,
+    "text": "Saya kurang pandai bekerja dalam kelompok.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 6,
+    "orig_num": 143,
+    "text": "Saya menginginkan segala sesuatunya berjalan sebagaimana mestinya.",
+    "answer": "S"
+  },
+  {
+    "new_num": 7,
+    "orig_num": 100,
+    "text": "Saya selalu hadir jika diundang.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 8,
+    "orig_num": 18,
+    "text": "Jika dibandingkan dengan orang lain, saya cenderung kurang menikmati berinteraksi dengan banyak orang.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 9,
+    "orig_num": 145,
+    "text": "Saya sangat tertutup mengenai kehidupan pribadi saya.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 10,
+    "orig_num": 142,
+    "text": "Saya mampu bekerja di bawah tekanan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 11,
+    "orig_num": 95,
+    "text": "Saya sering merasa tidak nyaman ketika berada di sekitar orang-orang.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 12,
+    "orig_num": 33,
+    "text": "Saya cenderung berada di belakang layar.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 13,
+    "orig_num": 1,
+    "text": "Saya tahu cara meyakinkan orang lain.",
+    "answer": "S"
+  },
+  {
+    "new_num": 14,
+    "orig_num": 96,
+    "text": "Saya ingin dibiarkan sendirian.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 15,
+    "orig_num": 120,
+    "text": "Saya mudah menyerah.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 16,
+    "orig_num": 36,
+    "text": "Saya melanggar peraturan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 17,
+    "orig_num": 103,
+    "text": "Saya tidak pernah kehabisan kata-kata ketika berbicara.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 18,
+    "orig_num": 88,
+    "text": "Saya tidak merokok.",
+    "answer": "S"
+  },
+  {
+    "new_num": 19,
+    "orig_num": 94,
+    "text": "Sulit bagi saya untuk mempengaruhi orang lain untuk melakukan apa yang saya mau.",
+    "answer": "S"
+  },
+  {
+    "new_num": 20,
+    "orig_num": 86,
+    "text": "Saya menghindari berhadapan dengan emosi-emosi yang tidak perlu diperhatikan.",
+    "answer": "S"
+  },
+  {
+    "new_num": 21,
+    "orig_num": 153,
+    "text": "Saya mampu mengelola berbagai pekerjaan pada saat yang bersamaan.",
+    "answer": "S"
+  },
+  {
+    "new_num": 22,
+    "orig_num": 119,
+    "text": "Saya merasa bahwa pekerjaan bukanlah bagian yang pernah saya inginkan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 23,
+    "orig_num": 132,
+    "text": "Saya sering membuat perencanaan-perencanaan di saat senggang.",
+    "answer": "S"
+  },
+  {
+    "new_num": 24,
+    "orig_num": 125,
+    "text": "Saya pandai dalam berbagai hal.",
+    "answer": "S"
+  },
+  {
+    "new_num": 25,
+    "orig_num": 22,
+    "text": "Saya selalu ceria.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 26,
+    "orig_num": 138,
+    "text": "Saya tidak pernah membicarakan orang lain.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 27,
+    "orig_num": 129,
+    "text": "Saya menjalankan dan menindaklanjuti komitmen yang saya pegang dengan teguh.",
+    "answer": "S"
+  },
+  {
+    "new_num": 28,
+    "orig_num": 133,
+    "text": "Saya tidak tahu cara untuk mengendalikan diri saya.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 29,
+    "orig_num": 155,
+    "text": "Saya mudah terintimidasi.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 30,
+    "orig_num": 65,
+    "text": "Saya melakukan hal-hal sesuai dengan rencana yang telah dibuat.",
+    "answer": "S"
+  },
+  {
+    "new_num": 31,
+    "orig_num": 26,
+    "text": "Saya mampu menyelesaikan pekerjaan tepat waktu.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 32,
+    "orig_num": 87,
+    "text": "Saya tidak memiliki banyak hal untuk dibicarakan.",
+    "answer": "S"
+  },
+  {
+    "new_num": 33,
+    "orig_num": 107,
+    "text": "Saya berhati-hati agar terhindar dari membuat kesalahan.",
+    "answer": "S"
+  },
+  {
+    "new_num": 34,
+    "orig_num": 106,
+    "text": "Saya melaksanakan perencanaan yang telah saya buat.",
+    "answer": "S"
+  },
+  {
+    "new_num": 35,
+    "orig_num": 41,
+    "text": "Saya tidak menonjol dalam hal apapun.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 36,
+    "orig_num": 141,
+    "text": "Saya mampu mengatasi apa pun.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 37,
+    "orig_num": 78,
+    "text": "Saya tidak keberatan menjadi pusat perhatian.",
+    "answer": "S"
+  },
+  {
+    "new_num": 38,
+    "orig_num": 34,
+    "text": "Saya tidak meninggalkan suatu tugas sebelum tugas tersebut terselesaikan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 39,
+    "orig_num": 28,
+    "text": "Saya teliti dalam pekerjaan saya.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 40,
+    "orig_num": 9,
+    "text": "Saya merasa perlu menghargai keputusan-keputusan yang dibuat oleh kelompok.",
+    "answer": "S"
+  },
+  {
+    "new_num": 41,
+    "orig_num": 63,
+    "text": "Saya mampu menghasilkan solusi dengan cepat.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 42,
+    "orig_num": 14,
+    "text": "Saya sering terlambat datang bekerja.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 43,
+    "orig_num": 84,
+    "text": "Saya menuntut kualitas.",
+    "answer": "S"
+  },
+  {
+    "new_num": 44,
+    "orig_num": 128,
+    "text": "Saya mempertimbangkan pro dan kontra.",
+    "answer": "S"
+  },
+  {
+    "new_num": 45,
+    "orig_num": 15,
+    "text": "Saya menyelesaikan pekerjaan dengan usaha yang secukupnya.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 46,
+    "orig_num": 8,
+    "text": "Saya berusaha untuk melampaui pencapaian orang lain.",
+    "answer": "S"
+  },
+  {
+    "new_num": 47,
+    "orig_num": 149,
+    "text": "Saya menghindari berhubungan dengan orang lain.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 48,
+    "orig_num": 81,
+    "text": "Saya suka menyusun perencanaan sebelum bertindak.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 49,
+    "orig_num": 52,
+    "text": "Saya mengerjakan pekerjaan sesegera mungkin.",
+    "answer": "S"
+  },
+  {
+    "new_num": 50,
+    "orig_num": 83,
+    "text": "Saya mampu menyesuaikan diri dalam berbagai situasi.",
+    "answer": "S"
+  },
+  {
+    "new_num": 51,
+    "orig_num": 82,
+    "text": "Saya fokus pada tujuan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 52,
+    "orig_num": 109,
+    "text": "Saya mengambil tanggung jawab.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 53,
+    "orig_num": 75,
+    "text": "Saya menyimpan segala sesuatu untuk diri sendiri.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 54,
+    "orig_num": 117,
+    "text": "Saya cenderung menjaga jarak dengan orang lain.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 55,
+    "orig_num": 24,
+    "text": "Saya pandai dalam berpidato dadakan.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 56,
+    "orig_num": 55,
+    "text": "Saya mengabaikan tugas-tugas saya.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 57,
+    "orig_num": 50,
+    "text": "Saya merasa harus banyak menghargai keputusan-keputusan yang dibuat oleh kelompok.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 58,
+    "orig_num": 20,
+    "text": "Saya menghabiskan waktu dengan tidak melakukan apapun.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 59,
+    "orig_num": 13,
+    "text": "Saya membutuhkan dorongan untuk memulai suatu hal.",
+    "answer": "S"
+  },
+  {
+    "new_num": 60,
+    "orig_num": 156,
+    "text": "Saya merasa bahwa hidup saya kurang memiliki arah.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 61,
+    "orig_num": 45,
+    "text": "Saya bekerja dengan penuh ikhlas.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 62,
+    "orig_num": 115,
+    "text": "Saya kurang menyediakan berbagai makanan yang sehat.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 63,
+    "orig_num": 37,
+    "text": "Saya membiarkan diri saya diperlakukan tidak semestinya.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 64,
+    "orig_num": 99,
+    "text": "Saya memiliki ritme kehidupan yang lambat.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 65,
+    "orig_num": 43,
+    "text": "Saya menyelesaikan banyak pekerjaan dengan cepat dan rapih.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 66,
+    "orig_num": 135,
+    "text": "Saya suka berolahraga.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 67,
+    "orig_num": 97,
+    "text": "Saya memilih untuk melakukan segalanya sendiri.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 68,
+    "orig_num": 136,
+    "text": "Saya menganggap bahwa bersosialisasi dengan orang lain itu tidak terlalu penting.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 69,
+    "orig_num": 140,
+    "text": "Saya memiliki ide-ide yang cemerlang.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 70,
+    "orig_num": 124,
+    "text": "Saya menangani banyak tugas dengan lancar.",
+    "answer": "S"
+  },
+  {
+    "new_num": 71,
+    "orig_num": 91,
+    "text": "Saya meninggalkan pekerjaan saya sebelum terselesaikan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 72,
+    "orig_num": 152,
+    "text": "Saya mengetahui cara untuk memikat atau menarik hati orang lain.",
+    "answer": "S"
+  },
+  {
+    "new_num": 73,
+    "orig_num": 40,
+    "text": "Saya mengelak dari tugas-tugas saya.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 74,
+    "orig_num": 11,
+    "text": "Saya tidak suka melakukan hal-hal yang membuat orang lain memperhatikan saya.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 75,
+    "orig_num": 68,
+    "text": "Saya berusaha untuk membuat semua orang diterima dan diikutsertakan dalam kelompok.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 76,
+    "orig_num": 110,
+    "text": "Saya kurang berbakat mempengaruhi orang lain.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 77,
+    "orig_num": 59,
+    "text": "Saya mengalokasikan sedikit waktu dan usaha dalam bekerja.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 78,
+    "orig_num": 29,
+    "text": "Saya dapat bergaul secara luwes dengan orang-orang yang baru saja saya kenal.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 79,
+    "orig_num": 42,
+    "text": "Saya mampu membuat orang lain untuk melakukan berbagai pekerjaan dengan rapih.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 80,
+    "orig_num": 48,
+    "text": "Saya mudah berteman.",
+    "answer": "S"
+  },
+  {
+    "new_num": 81,
+    "orig_num": 157,
+    "text": "Saya tidak pernah marah.",
+    "answer": "S"
+  },
+  {
+    "new_num": 82,
+    "orig_num": 6,
+    "text": "Saya meyakini segala sesuatu perlu dipikirkan secara seksama dan runtut.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 83,
+    "orig_num": 147,
+    "text": "Saya kurang pandai dalam membuat perencanaan aktivitas kelompok.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 84,
+    "orig_num": 76,
+    "text": "Saya tidak pernah berbicara kasar.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 85,
+    "orig_num": 17,
+    "text": "Saya kurang pandai membuat orang lain menyukai saya.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 86,
+    "orig_num": 70,
+    "text": "Saya terus melakukan sesuatu sampai semuanya sempurna.",
+    "answer": "S"
+  },
+  {
+    "new_num": 87,
+    "orig_num": 80,
+    "text": "Saya mampu menangani masalah-masalah yang rumit.",
+    "answer": "S"
+  },
+  {
+    "new_num": 88,
+    "orig_num": 134,
+    "text": "Saya tidak suka berkelahi.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 89,
+    "orig_num": 5,
+    "text": "Saya selalu bekerja/bertindak dengan terencana.",
+    "answer": "S"
+  },
+  {
+    "new_num": 90,
+    "orig_num": 7,
+    "text": "Saya cepat akrab dengan orang lain.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 91,
+    "orig_num": 73,
+    "text": "Saya menunggu orang lain untuk memimpin.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 92,
+    "orig_num": 72,
+    "text": "Saya mengerjakan sesuatu dengan 'setengah-setengah'.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 93,
+    "orig_num": 66,
+    "text": "Saya mudah menyesuaikan diri.",
+    "answer": "S"
+  },
+  {
+    "new_num": 94,
+    "orig_num": 104,
+    "text": "Saya cepat menangkap inti dari berbagai hal.",
+    "answer": "S"
+  },
+  {
+    "new_num": 95,
+    "orig_num": 74,
+    "text": "Saya sering terganggu dengan setidaknya salah satu dari anggota kelompok, saat berinteraksi dengan sekelompok orang.",
+    "answer": "S"
+  },
+  {
+    "new_num": 96,
+    "orig_num": 54,
+    "text": "Saya bertindak tanpa perencanaan.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 97,
+    "orig_num": 98,
+    "text": "Saya tidak menyelesaikan apa yang telah saya mulai.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 98,
+    "orig_num": 58,
+    "text": "Saya merasa patah semangat ketika menghadapi hambatan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 99,
+    "orig_num": 19,
+    "text": "Saya tidak terlalu termotivasi untuk mencapai kesuksesan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 100,
+    "orig_num": 49,
+    "text": "Saya ingin menjadi yang terbaik.",
+    "answer": "S"
+  },
+  {
+    "new_num": 101,
+    "orig_num": 121,
+    "text": "Saya selalu mematuhi perintah orangtua.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 102,
+    "orig_num": 127,
+    "text": "Menjadi bagian dari suatu kelompok merupakan hal yang menyenangkan.",
+    "answer": "S"
+  },
+  {
+    "new_num": 103,
+    "orig_num": 90,
+    "text": "Saya cenderung menghindari materi bacaan yang sulit.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 104,
+    "orig_num": 25,
+    "text": "Saya cepat dalam menyelesaikan banyak hal.",
+    "answer": "S"
+  },
+  {
+    "new_num": 105,
+    "orig_num": 113,
+    "text": "Saya menangani pekerjaan yang sulit dengan baik.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 106,
+    "orig_num": 21,
+    "text": "Saya tidak pernah berprasangka buruk terhadap orang lain.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 107,
+    "orig_num": 61,
+    "text": "Saya dapat dengan mudah membuat orang lain memperhatikan saya.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 108,
+    "orig_num": 38,
+    "text": "Saya sulit untuk melakukan pendekatan kepada orang lain.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 109,
+    "orig_num": 148,
+    "text": "Saya cenderung bertindak tanpa berpikir terlebih dahulu.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 110,
+    "orig_num": 12,
+    "text": "Saya mengerjakan pekerjaan yang tidak saya sukai sesegera mungkin.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 111,
+    "orig_num": 10,
+    "text": "Saya tidak banyak berbicara.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 112,
+    "orig_num": 4,
+    "text": "Saya menyelesaikan banyak pekerjaan.",
+    "answer": "S"
+  },
+  {
+    "new_num": 113,
+    "orig_num": 146,
+    "text": "Saya mudah panik.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 114,
+    "orig_num": 67,
+    "text": "Saya menetapkan standar yang tinggi untuk diri saya sendiri dan orang lain.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 115,
+    "orig_num": 102,
+    "text": "Saya tahu apa saja yang bisa menggugah orang lain.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 116,
+    "orig_num": 57,
+    "text": "Saya jarang merasa nyaman ketika berada bersama banyak orang.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 117,
+    "orig_num": 112,
+    "text": "Saya tidak menyukai perempuan.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 118,
+    "orig_num": 93,
+    "text": "Saya enggan mengungkapkan pendapat saya.",
+    "answer": "S"
+  },
+  {
+    "new_num": 119,
+    "orig_num": 126,
+    "text": "Saya mengikuti jadwal.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 120,
+    "orig_num": 111,
+    "text": "Saya kurang berbakat mempengaruhi orang lain.",
+    "answer": "S"
+  },
+  {
+    "new_num": 121,
+    "orig_num": 31,
+    "text": "Saya mendukung rekan tim atau anggota kelompok saya.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 122,
+    "orig_num": 122,
+    "text": "Saya cenderung memulai pembicaraan.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 123,
+    "orig_num": 27,
+    "text": "Saya menjalankan pekerjaan atau bertindak sesuai dengan rencana yang telah dibuat.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 124,
+    "orig_num": 44,
+    "text": "Saya mampu mengikuti banyak informasi sekaligus.",
+    "answer": "S"
+  },
+  {
+    "new_num": 125,
+    "orig_num": 56,
+    "text": "Saya tidak pernah menentang apapun.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 126,
+    "orig_num": 77,
+    "text": "Saya mampu membuat orang lain merasa tertarik.",
+    "answer": "S"
+  },
+  {
+    "new_num": 127,
+    "orig_num": 101,
+    "text": "Saya tidak pernah berbohong.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 128,
+    "orig_num": 69,
+    "text": "Saya tidak mengutarakan pemikiran saya secara leluasa ketika hal tersebut mungkin memunculkan hasil yang negatif.",
+    "answer": "S"
+  },
+  {
+    "new_num": 129,
+    "orig_num": 51,
+    "text": "Saya cenderung tidak banyak berbicara ketika berada di sekitar orang-orang yang sama sekali tidak dikenal.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 130,
+    "orig_num": 30,
+    "text": "Saya berusaha untuk lebih baik dari orang lain.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 131,
+    "orig_num": 2,
+    "text": "Saya berusaha mempengaruhi orang lain.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 132,
+    "orig_num": 123,
+    "text": "Saya terampil dalam menghadapi situasi pergaulan.",
+    "answer": "S"
+  },
+  {
+    "new_num": 133,
+    "orig_num": 60,
+    "text": "Saya selalu menghormati orang yang lebih tua.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 134,
+    "orig_num": 150,
+    "text": "Saya mudah berkecil hati.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 135,
+    "orig_num": 92,
+    "text": "Saya tidak tertarik berspekulasi tentang berbagai hal.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 136,
+    "orig_num": 144,
+    "text": "Saya tidak pernah menyerah.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 137,
+    "orig_num": 79,
+    "text": "Saya berhasil menyelesaikan tugas.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 138,
+    "orig_num": 3,
+    "text": "Saya mengubah perencanaan menjadi Tindakan.",
+    "answer": "S"
+  },
+  {
+    "new_num": 139,
+    "orig_num": 71,
+    "text": "Seringkali lupa untuk meletakkan barang di tempat yang seharusnya.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 140,
+    "orig_num": 139,
+    "text": "Saya berbicara kepada banyak orang yang berbeda-beda dalam suatu pesta.",
+    "answer": "S"
+  },
+  {
+    "new_num": 141,
+    "orig_num": 23,
+    "text": "Saya berusaha untuk memimpin orang lain.",
+    "answer": "S"
+  },
+  {
+    "new_num": 142,
+    "orig_num": 105,
+    "text": "Saya mampu menyelesaikan berbagai jenis tugas.",
+    "answer": "S"
+  },
+  {
+    "new_num": 143,
+    "orig_num": 130,
+    "text": "Saya sulit mengungkapkan perasaan saya.",
+    "answer": "S"
+  },
+  {
+    "new_num": 144,
+    "orig_num": 64,
+    "text": "Teman-teman menghargai saya karena penilaian saya yang bagus.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 145,
+    "orig_num": 151,
+    "text": "Saya selalu ramah kepada orang lain meskipun ia pernah menyakiti saya.",
+    "answer": "S"
+  },
+  {
+    "new_num": 146,
+    "orig_num": 116,
+    "text": "Saya tidak dapat menghasilkan ide-ide dengan baik.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 147,
+    "orig_num": 32,
+    "text": "Saya tidak suka banyak bercerita tentang diri saya.",
+    "answer": "SS"
+  },
+  {
+    "new_num": 148,
+    "orig_num": 137,
+    "text": "Saya meninggalkan barang-barang bawaan di sekitar saya.",
+    "answer": "STS"
+  },
+  {
+    "new_num": 149,
+    "orig_num": 35,
+    "text": "Saya mudah bingung.",
+    "answer": "TS"
+  },
+  {
+    "new_num": 150,
+    "orig_num": 89,
+    "text": "Saya tidak minum.",
+    "answer": "TS"
+  }
+]
