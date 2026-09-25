@@ -455,6 +455,78 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     </div>
                   </div>
 
+                  {/* Pilihan Akumulasi Waktu vs Reset per Sesi */}
+                  <div style={{ background: '#f8f9fa', padding: 16, borderRadius: 8, border: '1px solid #dadce0' }}>
+                    <h4 style={{ fontWeight: 700, fontSize: 15, marginBottom: 10 }}>
+                      ⏳ Sistem Perhitungan Waktu Timer
+                    </h4>
+                    <p style={{ fontSize: 13, color: '#5f6368', marginBottom: 12 }}>
+                      Tentukan apakah sisa waktu dari sesi sebelumnya diakumulasikan ke sesi berikutnya atau di-reset baru:
+                    </p>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                      <label
+                        style={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: 12,
+                          padding: 12,
+                          borderRadius: 8,
+                          border: `1.5px solid ${formSettings.timerMode === 'accumulated' ? 'var(--primary-color)' : '#dadce0'}`,
+                          backgroundColor: formSettings.timerMode === 'accumulated' ? 'var(--primary-light)' : '#ffffff',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <input
+                          type="radio"
+                          name="timerMode"
+                          value="accumulated"
+                          checked={formSettings.timerMode === 'accumulated'}
+                          onChange={() => setFormSettings({ ...formSettings, timerMode: 'accumulated' })}
+                          style={{ marginTop: 2 }}
+                        />
+                        <div>
+                          <div style={{ fontWeight: 700, fontSize: 14 }}>
+                            Mode Akumulasi Waktu (Sisa Waktu Terbawa) — Direkomendasikan
+                          </div>
+                          <div style={{ fontSize: 12, color: '#5f6368', marginTop: 2 }}>
+                            Jika peserta selesai lebih cepat (misal Sesi 1 selesai dalam 3 menit dari jatah 5 menit), sisa 2 menit tidak hangus melainkan otomatis diakumulasikan ke Sesi 2 (jadi 7 menit). Jika waktu habis sebelum selesai, sistem baru otomatis memindahkan sesi.
+                          </div>
+                        </div>
+                      </label>
+
+                      <label
+                        style={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: 12,
+                          padding: 12,
+                          borderRadius: 8,
+                          border: `1.5px solid ${formSettings.timerMode === 'per_session' ? 'var(--primary-color)' : '#dadce0'}`,
+                          backgroundColor: formSettings.timerMode === 'per_session' ? 'var(--primary-light)' : '#ffffff',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <input
+                          type="radio"
+                          name="timerMode"
+                          value="per_session"
+                          checked={formSettings.timerMode === 'per_session'}
+                          onChange={() => setFormSettings({ ...formSettings, timerMode: 'per_session' })}
+                          style={{ marginTop: 2 }}
+                        />
+                        <div>
+                          <div style={{ fontWeight: 700, fontSize: 14 }}>
+                            Mode Reset per Sesi (Mandiri)
+                          </div>
+                          <div style={{ fontSize: 12, color: '#5f6368', marginTop: 2 }}>
+                            Setiap sesi selalu mulai dari waktu awal yang ditentukan di atas. Sisa waktu dari sesi sebelumnya tidak dibawa ke sesi berikutnya.
+                          </div>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+
                   {/* Pengaturan Acak / Shuffle Soal */}
                   <div style={{ background: '#f8f9fa', padding: 16, borderRadius: 8, border: '1px solid #dadce0' }}>
                     <h4 style={{ fontWeight: 700, fontSize: 15, marginBottom: 12 }}>

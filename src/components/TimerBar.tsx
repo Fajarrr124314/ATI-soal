@@ -8,6 +8,7 @@ interface TimerBarProps {
   totalQuestions: number;
   answeredCount: number;
   themeColor: string;
+  timerMode?: 'accumulated' | 'per_session';
   onOpenNavigator: () => void;
 }
 
@@ -17,6 +18,7 @@ export const TimerBar: React.FC<TimerBarProps> = ({
   totalQuestions,
   answeredCount,
   themeColor,
+  timerMode = 'accumulated',
   onOpenNavigator,
 }) => {
   const minutes = Math.floor(timeLeftSeconds / 60);
@@ -43,6 +45,23 @@ export const TimerBar: React.FC<TimerBarProps> = ({
           >
             Sesi {currentSession} / 3
           </span>
+
+          {timerMode === 'accumulated' && currentSession > 1 && (
+            <span
+              style={{
+                fontSize: 11,
+                color: '#0f9d58',
+                background: '#e6f4ea',
+                padding: '2px 8px',
+                borderRadius: 10,
+                fontWeight: 600,
+                whiteSpace: 'nowrap',
+              }}
+              title="Waktu sisa dari sesi sebelumnya diakumulasikan ke sesi ini"
+            >
+              Akumulasi Waktu
+            </span>
+          )}
 
           <button
             onClick={onOpenNavigator}

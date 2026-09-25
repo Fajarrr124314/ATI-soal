@@ -24,6 +24,7 @@ export function loadSettings(): FormSettings {
       ...parsed,
       supabaseUrl: parsed.supabaseUrl || DEFAULT_SETTINGS.supabaseUrl,
       supabaseAnonKey: parsed.supabaseAnonKey || DEFAULT_SETTINGS.supabaseAnonKey,
+      timerMode: parsed.timerMode || DEFAULT_SETTINGS.timerMode,
     };
   } catch {
     return DEFAULT_SETTINGS;

@@ -148,13 +148,17 @@ export const App: React.FC = () => {
   // Move to next session
   const goToNextSession = (fromSession: SessionId) => {
     if (fromSession === 1) {
-      const s2DurationSec = settings.sessions[2].durationMinutes * 60;
-      setTimeLeft(s2DurationSec);
+      const s2BaseSec = settings.sessions[2].durationMinutes * 60;
+      // Jika mode akumulasi: sisa detik sesi 1 ditambahkan ke sesi 2
+      const bonusSec = settings.timerMode === 'accumulated' ? Math.max(0, timeLeft) : 0;
+      setTimeLeft(s2BaseSec + bonusSec);
       setCurrentStep(2);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (fromSession === 2) {
-      const s3DurationSec = settings.sessions[3].durationMinutes * 60;
-      setTimeLeft(s3DurationSec);
+      const s3BaseSec = settings.sessions[3].durationMinutes * 60;
+      // Jika mode akumulasi: sisa detik sesi 2 ditambahkan ke sesi 3
+      const bonusSec = settings.timerMode === 'accumulated' ? Math.max(0, timeLeft) : 0;
+      setTimeLeft(s3BaseSec + bonusSec);
       setCurrentStep(3);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -321,6 +325,7 @@ export const App: React.FC = () => {
             totalQuestions={currentTotalQuestions}
             answeredCount={currentAnsweredCount}
             themeColor={settings.themeColor}
+            timerMode={settings.timerMode}
             onOpenNavigator={() => setIsNavOpen(true)}
           />
 

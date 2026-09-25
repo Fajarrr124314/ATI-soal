@@ -7,6 +7,7 @@ export const DEFAULT_SETTINGS: FormSettings = {
   adminPassword: 'admin123',
   themeColor: '#673ab7', // Google Forms classic purple
   autoAdvanceOnTimeout: true,
+  timerMode: 'accumulated', // default akumulasi waktu
   showScoreToUser: true,
   allowReviewAnswers: true,
   sessions: {

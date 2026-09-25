@@ -25,6 +25,7 @@ export interface FormSettings {
   adminPassword: string; // default: 'admin123'
   themeColor: string; // default: '#673ab7' (Google Forms purple)
   autoAdvanceOnTimeout: boolean;
+  timerMode: 'accumulated' | 'per_session'; // akumulasi sisa waktu vs reset per sesi
   showScoreToUser: boolean;
   allowReviewAnswers: boolean;
   sessions: {
