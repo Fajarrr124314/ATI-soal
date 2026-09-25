@@ -136,3 +136,44 @@ export async function fetchSubmissionsFromSupabase(
     return null;
   }
 }
+
+export async function deleteSubmissionFromSupabase(
+  id: string,
+  url?: string,
+  key?: string
+): Promise<boolean> {
+  const client = getSupabaseClient(url, key);
+  if (!client) return false;
+
+  try {
+    const { error } = await client.from('submissions').delete().eq('id', id);
+    if (error) {
+      console.warn('Supabase delete error:', error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Supabase delete error:', err);
+    return false;
+  }
+}
+
+export async function clearAllSubmissionsFromSupabase(
+  url?: string,
+  key?: string
+): Promise<boolean> {
+  const client = getSupabaseClient(url, key);
+  if (!client) return false;
+
+  try {
+    const { error } = await client.from('submissions').delete().neq('id', '');
+    if (error) {
+      console.warn('Supabase clear all error:', error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error('Supabase clear all error:', err);
+    return false;
+  }
+}

@@ -7,6 +7,8 @@ import {
   loadSubmissions,
   deleteSubmission,
   clearAllSubmissions,
+  getDeletedSubmissionIds,
+  getClearTimestamp,
   exportSubmissionsToExcel,
 } from '../services/storage';
 import { fetchSubmissionsFromSupabase } from '../services/supabase';
@@ -129,10 +131,13 @@ export const AdminModal: React.FC<AdminModalProps> = ({
       if (settings.supabaseUrl && settings.supabaseAnonKey) {
         fetchSubmissionsFromSupabase(settings.supabaseUrl, settings.supabaseAnonKey).then((cloud) => {
           if (cloud && cloud.length > 0) {
-            // Merge unique by id
+            const deletedIds = getDeletedSubmissionIds();
+            const clearTs = getClearTimestamp();
             const existingIds = new Set(local.map((s) => s.id));
             const merged = [...local];
             for (const c of cloud) {
+              if (deletedIds.has(c.id)) continue;
+              if (clearTs && new Date(c.submittedAt).getTime() <= clearTs) continue;
               if (!existingIds.has(c.id)) {
                 merged.push(c);
               }
@@ -184,17 +189,17 @@ export const AdminModal: React.FC<AdminModalProps> = ({
     }
   };
 
-  const handleDeleteSub = (id: string) => {
+  const handleDeleteSub = async (id: string) => {
     if (confirm('Hapus data peserta ini?')) {
-      const updated = deleteSubmission(id);
+      const updated = await deleteSubmission(id, formSettings);
       setSubmissions(updated);
       if (selectedSubDetail?.id === id) setSelectedSubDetail(null);
     }
   };
 
-  const handleClearAllSubs = () => {
+  const handleClearAllSubs = async () => {
     if (confirm('PERINGATAN: Hapus SEMUA riwayat peserta? Tindakan ini tidak dapat dibatalkan.')) {
-      clearAllSubmissions();
+      await clearAllSubmissions(formSettings);
       setSubmissions([]);
       setSelectedSubDetail(null);
     }

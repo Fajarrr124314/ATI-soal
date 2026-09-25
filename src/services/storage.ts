@@ -5,7 +5,11 @@ import {
   DEFAULT_ANSWER_KEYS_SESI_2,
   DEFAULT_ANSWER_KEYS_SESI_3,
 } from '../data/defaultConfig';
-import { saveSubmissionToSupabase } from './supabase';
+import {
+  saveSubmissionToSupabase,
+  deleteSubmissionFromSupabase,
+  clearAllSubmissionsFromSupabase,
+} from './supabase';
 import * as XLSX from 'xlsx';
 
 const SETTINGS_KEY = 'ati_form_settings_v1';
@@ -13,6 +17,8 @@ const KEYS_1_KEY = 'ati_answer_keys_sesi_1_v1';
 const KEYS_2_KEY = 'ati_answer_keys_sesi_2_v1';
 const KEYS_3_KEY = 'ati_answer_keys_sesi_3_v1';
 const SUBMISSIONS_KEY = 'ati_submissions_v1';
+const DELETED_IDS_KEY = 'ati_deleted_submissions_v1';
+const CLEAR_TIMESTAMP_KEY = 'ati_cleared_at_v1';
 
 export function loadSettings(): FormSettings {
   try {
@@ -84,10 +90,46 @@ export function resetAnswerKeys(): {
   };
 }
 
+export function getDeletedSubmissionIds(): Set<string> {
+  try {
+    const raw = localStorage.getItem(DELETED_IDS_KEY);
+    return raw ? new Set(JSON.parse(raw)) : new Set();
+  } catch {
+    return new Set();
+  }
+}
+
+export function markSubmissionAsDeleted(id: string): void {
+  try {
+    const set = getDeletedSubmissionIds();
+    set.add(id);
+    localStorage.setItem(DELETED_IDS_KEY, JSON.stringify(Array.from(set)));
+  } catch (e) {
+    console.error('Failed to mark submission as deleted:', e);
+  }
+}
+
+export function getClearTimestamp(): number {
+  try {
+    const raw = localStorage.getItem(CLEAR_TIMESTAMP_KEY);
+    return raw ? parseInt(raw, 10) : 0;
+  } catch {
+    return 0;
+  }
+}
+
 export function loadSubmissions(): TestSubmission[] {
   try {
     const raw = localStorage.getItem(SUBMISSIONS_KEY);
-    return raw ? JSON.parse(raw) : [];
+    if (!raw) return [];
+    const list: TestSubmission[] = JSON.parse(raw);
+    const deletedIds = getDeletedSubmissionIds();
+    const clearTs = getClearTimestamp();
+    return list.filter((s) => {
+      if (deletedIds.has(s.id)) return false;
+      if (clearTs && new Date(s.submittedAt).getTime() <= clearTs) return false;
+      return true;
+    });
   } catch {
     return [];
   }
@@ -115,14 +157,44 @@ export async function addSubmission(
   }
 }
 
-export function deleteSubmission(id: string): TestSubmission[] {
+export async function deleteSubmission(
+  id: string,
+  settings?: FormSettings
+): Promise<TestSubmission[]> {
+  markSubmissionAsDeleted(id);
   const list = loadSubmissions().filter((s) => s.id !== id);
   localStorage.setItem(SUBMISSIONS_KEY, JSON.stringify(list));
+
+  const url = settings?.supabaseUrl || import.meta.env.VITE_SUPABASE_URL;
+  const key = settings?.supabaseAnonKey || import.meta.env.VITE_SUPABASE_ANON_KEY;
+  if (url && key) {
+    try {
+      await deleteSubmissionFromSupabase(id, url, key);
+    } catch (err) {
+      console.warn('Could not delete from Supabase:', err);
+    }
+  }
+
   return list;
 }
 
-export function clearAllSubmissions(): void {
+export async function clearAllSubmissions(settings?: FormSettings): Promise<void> {
+  const current = loadSubmissions();
+  for (const s of current) {
+    markSubmissionAsDeleted(s.id);
+  }
+  localStorage.setItem(CLEAR_TIMESTAMP_KEY, Date.now().toString());
   localStorage.removeItem(SUBMISSIONS_KEY);
+
+  const url = settings?.supabaseUrl || import.meta.env.VITE_SUPABASE_URL;
+  const key = settings?.supabaseAnonKey || import.meta.env.VITE_SUPABASE_ANON_KEY;
+  if (url && key) {
+    try {
+      await clearAllSubmissionsFromSupabase(url, key);
+    } catch (err) {
+      console.warn('Could not clear all from Supabase:', err);
+    }
+  }
 }
 
 // Export responses to Excel (.xlsx)
