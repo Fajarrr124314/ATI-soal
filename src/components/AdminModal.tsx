@@ -892,15 +892,66 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                     </div>
                   )}
 
+                  {/* Legend Bar for Sessions */}
+                  {activeKeySession === 3 && (
+                    <div
+                      style={{
+                        padding: '8px 14px',
+                        backgroundColor: '#f8fafc',
+                        borderRadius: 8,
+                        border: '1px solid #e2e8f0',
+                        marginBottom: 12,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        flexWrap: 'wrap',
+                        gap: 8,
+                        fontSize: 12,
+                      }}
+                    >
+                      <span style={{ fontWeight: 600, color: '#475569' }}>Keterangan Pilihan Kunci Sesi 3:</span>
+                      <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                        <span style={{ padding: '2px 8px', borderRadius: 4, background: '#e0f2fe', color: '#0369a1', fontWeight: 700 }}>SS : Sangat Setuju</span>
+                        <span style={{ padding: '2px 8px', borderRadius: 4, background: '#ccfbf1', color: '#0f766e', fontWeight: 700 }}>S : Setuju</span>
+                        <span style={{ padding: '2px 8px', borderRadius: 4, background: '#fef3c7', color: '#b45309', fontWeight: 700 }}>TS : Tidak Setuju</span>
+                        <span style={{ padding: '2px 8px', borderRadius: 4, background: '#fee2e2', color: '#b91c1c', fontWeight: 700 }}>STS : Sangat Tidak Setuju</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {activeKeySession === 2 && (
+                    <div
+                      style={{
+                        padding: '8px 14px',
+                        backgroundColor: '#f8fafc',
+                        borderRadius: 8,
+                        border: '1px solid #e2e8f0',
+                        marginBottom: 12,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        flexWrap: 'wrap',
+                        gap: 8,
+                        fontSize: 12,
+                      }}
+                    >
+                      <span style={{ fontWeight: 600, color: '#475569' }}>Keterangan Pilihan Kunci Sesi 2:</span>
+                      <div style={{ display: 'flex', gap: 8 }}>
+                        <span style={{ padding: '2px 8px', borderRadius: 4, background: '#e0f2fe', color: '#0284c7', fontWeight: 700 }}>B : Beda</span>
+                        <span style={{ padding: '2px 8px', borderRadius: 4, background: '#dcfce7', color: '#15803d', fontWeight: 700 }}>S : Sama</span>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Answer Key Grid */}
                   <div
                     style={{
                       display: 'grid',
-                      gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))',
-                      gap: 10,
+                      gridTemplateColumns: 'repeat(auto-fill, minmax(96px, 1fr))',
+                      gap: 8,
                       maxHeight: '52vh',
                       overflowY: 'auto',
-                      padding: 6,
+                      padding: 4,
                     }}
                   >
                     {(() => {
@@ -924,9 +975,9 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                             onClick={() => isReordering && handleClickBoxInReorder(i)}
                             className={`answer-key-box ${isReordering ? 'jiggle-box' : ''} ${isDragged ? 'dragging' : ''} ${isDragOver ? 'drag-over' : ''} ${isSelectedSwap ? 'selected-swap' : ''}`}
                             style={{
-                              padding: '8px 10px',
+                              padding: '6px 10px',
                               borderRadius: 8,
-                              border: isSelectedSwap ? '2px solid #1a73e8' : '1px solid #dadce0',
+                              border: isSelectedSwap ? '2px solid #1a73e8' : '1px solid #e2e8f0',
                               backgroundColor: isSelectedSwap ? '#e8f0fe' : '#ffffff',
                               display: 'flex',
                               alignItems: 'center',
@@ -934,13 +985,13 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                               gap: 6,
                               cursor: isReordering ? 'grab' : 'default',
                               transition: 'all 0.15s ease',
-                              position: 'relative',
+                              boxShadow: '0 1px 2px rgba(0,0,0,0.03)',
                             }}
                             title={isReordering ? `Klik atau geser soal #${i} untuk menukar kunci` : undefined}
                           >
                             <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                               {isReordering && <Move size={12} color="var(--primary-color)" style={{ opacity: 0.8 }} />}
-                              <span style={{ fontSize: 12, fontWeight: 700, color: '#5f6368' }}>#{i}</span>
+                              <span style={{ fontSize: 12, fontWeight: 700, color: '#64748b' }}>#{i}</span>
                             </div>
 
                             <div style={{ pointerEvents: isReordering ? 'none' : 'auto' }}>
@@ -956,8 +1007,10 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                     padding: '4px 2px',
                                     fontSize: 13,
                                     fontWeight: 700,
-                                    borderRadius: 4,
-                                    border: '1px solid #ced4da',
+                                    borderRadius: 6,
+                                    border: '1px solid #cbd5e1',
+                                    backgroundColor: '#f8fafc',
+                                    color: '#1e293b',
                                   }}
                                 />
                               ) : activeKeySession === 2 ? (
@@ -965,26 +1018,54 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                   value={currentVal}
                                   onChange={(e) => handleKeyChange(2, i, e.target.value)}
                                   style={{
-                                    padding: '4px',
-                                    fontSize: 13,
-                                    fontWeight: 700,
-                                    borderRadius: 4,
-                                    border: '1px solid #ced4da',
+                                    padding: '4px 8px',
+                                    fontSize: 12,
+                                    fontWeight: 800,
+                                    borderRadius: 6,
+                                    border: '1px solid #cbd5e1',
+                                    backgroundColor: currentVal === 'B' ? '#e0f2fe' : currentVal === 'S' ? '#dcfce7' : '#ffffff',
+                                    color: currentVal === 'B' ? '#0284c7' : currentVal === 'S' ? '#15803d' : '#1e293b',
+                                    cursor: 'pointer',
+                                    textAlign: 'center',
+                                    minWidth: 48,
                                   }}
                                 >
-                                  <option value="B">B (Beda)</option>
-                                  <option value="S">S (Sama)</option>
+                                  <option value="B">B</option>
+                                  <option value="S">S</option>
                                 </select>
                               ) : (
                                 <select
                                   value={currentVal}
                                   onChange={(e) => handleKeyChange(3, i, e.target.value)}
                                   style={{
-                                    padding: '4px',
+                                    padding: '4px 6px',
                                     fontSize: 12,
-                                    fontWeight: 700,
-                                    borderRadius: 4,
-                                    border: '1px solid #ced4da',
+                                    fontWeight: 800,
+                                    borderRadius: 6,
+                                    border: '1px solid #cbd5e1',
+                                    backgroundColor:
+                                      currentVal === 'SS'
+                                        ? '#e0f2fe'
+                                        : currentVal === 'S'
+                                        ? '#ccfbf1'
+                                        : currentVal === 'TS'
+                                        ? '#fef3c7'
+                                        : currentVal === 'STS'
+                                        ? '#fee2e2'
+                                        : '#ffffff',
+                                    color:
+                                      currentVal === 'SS'
+                                        ? '#0369a1'
+                                        : currentVal === 'S'
+                                        ? '#0f766e'
+                                        : currentVal === 'TS'
+                                        ? '#b45309'
+                                        : currentVal === 'STS'
+                                        ? '#b91c1c'
+                                        : '#1e293b',
+                                    cursor: 'pointer',
+                                    textAlign: 'center',
+                                    minWidth: 54,
                                   }}
                                 >
                                   <option value="SS">SS</option>

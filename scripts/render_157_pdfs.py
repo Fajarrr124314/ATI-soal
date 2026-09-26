@@ -144,10 +144,10 @@ html_soal = f"""<!DOCTYPE html>
   <div class="instructions">
     <div><strong>Petunjuk:</strong> Bacalah setiap nomor pertanyaan, lalu tentukan respon Anda pada Lembar Jawaban Sistem:</div>
     <div class="legend-items">
-      <span style="color:#0369a1; background:#e0f2fe;">SS : Sangat Sesuai</span>
-      <span style="color:#0f766e; background:#ccfbf1;">S : Sesuai</span>
-      <span style="color:#b45309; background:#fef3c7;">TS : Tidak Sesuai</span>
-      <span style="color:#b91c1c; background:#fee2e2;">STS : Sangat Tidak Sesuai</span>
+      <span style="color:#0369a1; background:#e0f2fe;">SS : Sangat Setuju</span>
+      <span style="color:#0f766e; background:#ccfbf1;">S : Setuju</span>
+      <span style="color:#b45309; background:#fef3c7;">TS : Tidak Setuju</span>
+      <span style="color:#b91c1c; background:#fee2e2;">STS : Sangat Tidak Setuju</span>
     </div>
   </div>
 

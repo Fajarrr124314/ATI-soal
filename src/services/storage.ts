@@ -44,6 +44,9 @@ export function loadSettings(): FormSettings {
         3: {
           ...DEFAULT_SETTINGS.sessions[3],
           ...(parsed.sessions?.[3] || {}),
+          description: parsed.sessions?.[3]?.description?.includes('Sesuai')
+            ? DEFAULT_SETTINGS.sessions[3].description
+            : (parsed.sessions?.[3]?.description || DEFAULT_SETTINGS.sessions[3].description),
           totalQuestions: 157,
           shuffleQuestions: false,
         },

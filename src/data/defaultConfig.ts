@@ -32,7 +32,7 @@ export const DEFAULT_SETTINGS: FormSettings = {
     3: {
       session: 3,
       title: 'Sesi 3: Penilaian Sikap & Respon (Acak)',
-      description: 'Pilihlah respon pada lembar jawaban: SS (Sangat Sesuai), S (Sesuai), TS (Tidak Sesuai), STS (Sangat Tidak Sesuai) sesuai nomor pada Lembar Soal Sesi 3.',
+      description: 'Pilihlah respon pada lembar jawaban: SS (Sangat Setuju), S (Setuju), TS (Tidak Setuju), STS (Sangat Tidak Setuju) sesuai nomor pada Lembar Soal Sesi 3.',
       durationMinutes: 5,
       shuffleQuestions: false, // Sudah diacak permanen dan sinkron dengan PDF Soal
       totalQuestions: 157,
