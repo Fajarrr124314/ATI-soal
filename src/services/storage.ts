@@ -31,6 +31,16 @@ export function loadSettings(): FormSettings {
       sessions: {
         ...DEFAULT_SETTINGS.sessions,
         ...(parsed.sessions || {}),
+        2: {
+          ...DEFAULT_SETTINGS.sessions[2],
+          ...(parsed.sessions?.[2] || {}),
+          title: parsed.sessions?.[2]?.title?.includes('Benar / Salah')
+            ? DEFAULT_SETTINGS.sessions[2].title
+            : (parsed.sessions?.[2]?.title || DEFAULT_SETTINGS.sessions[2].title),
+          description: parsed.sessions?.[2]?.description?.includes('Benar')
+            ? DEFAULT_SETTINGS.sessions[2].description
+            : (parsed.sessions?.[2]?.description || DEFAULT_SETTINGS.sessions[2].description),
+        },
         3: {
           ...DEFAULT_SETTINGS.sessions[3],
           ...(parsed.sessions?.[3] || {}),

@@ -22,8 +22,8 @@ export const DEFAULT_SETTINGS: FormSettings = {
     },
     2: {
       session: 2,
-      title: 'Sesi 2: Pernyataan Benar / Salah (B / S)',
-      description: 'Tentukan apakah setiap pernyataan Benar (B) atau Salah (S).',
+      title: 'Sesi 2: Beda / Sama (B / S)',
+      description: 'Tentukan apakah setiap pasangan kata/pernyataan Beda (B) atau Sama (S).',
       durationMinutes: 5,
       shuffleQuestions: false,
       totalQuestions: 45,

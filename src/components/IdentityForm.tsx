@@ -82,7 +82,7 @@ export const IdentityForm: React.FC<IdentityFormProps> = ({ settings, onStart })
             }}
           >
             <div style={{ fontWeight: 700, color: settings.themeColor, fontSize: 14 }}>Sesi 2</div>
-            <div style={{ fontSize: 13, color: '#333', marginTop: 4 }}>Benar / Salah (B / S)</div>
+            <div style={{ fontSize: 13, color: '#333', marginTop: 4 }}>Beda / Sama (B / S)</div>
             <div style={{ fontSize: 12, color: '#666', marginTop: 4 }}>
               <strong>45 Soal</strong> • {settings.sessions[2].durationMinutes} Menit
             </div>

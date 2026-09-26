@@ -28,7 +28,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
     if (session === 2) {
       return (
         <>
-          <span>{opt === 'B' ? 'Benar (B)' : 'Salah (S)'}</span>
+          <span>{opt === 'B' ? 'Beda (B)' : 'Sama (S)'}</span>
         </>
       );
     }

@@ -207,7 +207,7 @@ export const ResultView: React.FC<ResultViewProps> = ({
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span style={{ fontWeight: 700, fontSize: 14, color: settings.themeColor }}>Sesi 2</span>
-                <span style={{ fontSize: 12, color: '#5f6368' }}>Benar / Salah</span>
+                <span style={{ fontSize: 12, color: '#5f6368' }}>Beda / Sama</span>
               </div>
               <div style={{ fontSize: 28, fontWeight: 700, margin: '8px 0', color: '#202124' }}>
                 {submission.session2.scorePercentage.toFixed(1)}%

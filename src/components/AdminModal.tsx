@@ -971,8 +971,8 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                                     border: '1px solid #ced4da',
                                   }}
                                 >
-                                  <option value="B">B</option>
-                                  <option value="S">S</option>
+                                  <option value="B">B (Beda)</option>
+                                  <option value="S">S (Sama)</option>
                                 </select>
                               ) : (
                                 <select
