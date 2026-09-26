@@ -67,6 +67,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
   const [submissions, setSubmissions] = useState<TestSubmission[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedSubDetail, setSelectedSubDetail] = useState<TestSubmission | null>(null);
+  const [inspectSession, setInspectSession] = useState<1 | 2 | 3 | null>(null);
 
   // Mode Atur Urutan Kunci Jawaban (Wobble & Drag-and-Drop)
   const [isReordering, setIsReordering] = useState(false);
@@ -1077,96 +1078,290 @@ export const AdminModal: React.FC<AdminModalProps> = ({
                           </tr>
                         </thead>
                         <tbody>
-                          {filteredSubmissions.map((sub) => (
-                            <tr
-                              key={sub.id}
-                              style={{ borderBottom: '1px solid #eeeeee', backgroundColor: '#ffffff' }}
-                            >
-                              <td style={{ padding: '10px 12px', color: '#5f6368', whiteSpace: 'nowrap' }}>
-                                {new Date(sub.submittedAt).toLocaleTimeString('id-ID', {
-                                  hour: '2-digit',
-                                  minute: '2-digit',
-                                })}
-                              </td>
-                              <td style={{ padding: '10px 12px', fontWeight: 600 }}>{sub.participant.name}</td>
-                              <td style={{ padding: '10px 12px', color: '#5f6368' }}>
-                                {sub.participant.participantNumber}
-                              </td>
-                              <td style={{ padding: '10px 12px', textAlign: 'center' }}>
-                                {sub.session1.correctCount}/{sub.session1.totalQuestions} ({sub.session1.scorePercentage.toFixed(0)}%)
-                              </td>
-                              <td style={{ padding: '10px 12px', textAlign: 'center' }}>
-                                {sub.session2.correctCount}/{sub.session2.totalQuestions} ({sub.session2.scorePercentage.toFixed(0)}%)
-                              </td>
-                              <td style={{ padding: '10px 12px', textAlign: 'center' }}>
-                                {sub.session3.correctCount}/{sub.session3.totalQuestions} ({sub.session3.scorePercentage.toFixed(0)}%)
-                              </td>
-                              <td style={{ padding: '10px 12px', textAlign: 'center', fontWeight: 700, color: 'var(--primary-color)' }}>
-                                {sub.totalScorePercentage.toFixed(1)}%
-                              </td>
-                              <td style={{ padding: '10px 12px', textAlign: 'center' }}>
-                                <div style={{ display: 'flex', justifyContent: 'center', gap: 6 }}>
-                                  <button
-                                    onClick={() => setSelectedSubDetail(sub)}
-                                    title="Lihat Detail Jawaban"
-                                    style={{
-                                      border: 'none',
-                                      background: '#f1f3f4',
-                                      padding: '4px 8px',
-                                      borderRadius: 4,
-                                      cursor: 'pointer',
-                                    }}
-                                  >
-                                    <Eye size={14} />
-                                  </button>
-                                  <button
-                                    onClick={() => handleDeleteSub(sub.id)}
-                                    title="Hapus Peserta Ini"
-                                    style={{
-                                      border: 'none',
-                                      background: '#fce8e6',
-                                      color: 'var(--danger-color)',
-                                      padding: '4px 8px',
-                                      borderRadius: 4,
-                                      cursor: 'pointer',
-                                    }}
-                                  >
-                                    <Trash2 size={14} />
-                                  </button>
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
+                          {filteredSubmissions.map((sub) => {
+                            const isExpanded = selectedSubDetail?.id === sub.id;
+                            return (
+                              <React.Fragment key={sub.id}>
+                                <tr
+                                  style={{
+                                    borderBottom: isExpanded ? 'none' : '1px solid #eeeeee',
+                                    backgroundColor: isExpanded ? '#f0f4ff' : '#ffffff',
+                                    transition: 'background-color 0.15s ease',
+                                  }}
+                                >
+                                  <td style={{ padding: '10px 12px', color: '#5f6368', whiteSpace: 'nowrap' }}>
+                                    {new Date(sub.submittedAt).toLocaleTimeString('id-ID', {
+                                      hour: '2-digit',
+                                      minute: '2-digit',
+                                    })}
+                                  </td>
+                                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>{sub.participant.name}</td>
+                                  <td style={{ padding: '10px 12px', color: '#5f6368' }}>
+                                    {sub.participant.participantNumber}
+                                  </td>
+                                  <td style={{ padding: '10px 12px', textAlign: 'center' }}>
+                                    {sub.session1.correctCount}/{sub.session1.totalQuestions} ({sub.session1.scorePercentage.toFixed(0)}%)
+                                  </td>
+                                  <td style={{ padding: '10px 12px', textAlign: 'center' }}>
+                                    {sub.session2.correctCount}/{sub.session2.totalQuestions} ({sub.session2.scorePercentage.toFixed(0)}%)
+                                  </td>
+                                  <td style={{ padding: '10px 12px', textAlign: 'center' }}>
+                                    {sub.session3.correctCount}/{sub.session3.totalQuestions} ({sub.session3.scorePercentage.toFixed(0)}%)
+                                  </td>
+                                  <td style={{ padding: '10px 12px', textAlign: 'center', fontWeight: 700, color: 'var(--primary-color)' }}>
+                                    {sub.totalScorePercentage.toFixed(1)}%
+                                  </td>
+                                  <td style={{ padding: '10px 12px', textAlign: 'center' }}>
+                                    <div style={{ display: 'flex', justifyContent: 'center', gap: 6 }}>
+                                      <button
+                                        type="button"
+                                        onClick={() => {
+                                          if (isExpanded) {
+                                            setSelectedSubDetail(null);
+                                            setInspectSession(null);
+                                          } else {
+                                            setSelectedSubDetail(sub);
+                                            setInspectSession(null);
+                                          }
+                                        }}
+                                        title={isExpanded ? 'Tutup Preview' : 'Lihat Detail Jawaban'}
+                                        style={{
+                                          border: isExpanded ? '1px solid var(--primary-color)' : '1px solid #dadce0',
+                                          background: isExpanded ? 'var(--primary-color)' : '#f1f3f4',
+                                          color: isExpanded ? '#ffffff' : '#3c4043',
+                                          padding: '4px 8px',
+                                          borderRadius: 4,
+                                          cursor: 'pointer',
+                                          display: 'inline-flex',
+                                          alignItems: 'center',
+                                          justifyContent: 'center',
+                                          transition: 'all 0.15s ease',
+                                        }}
+                                      >
+                                        <Eye size={14} />
+                                      </button>
+                                      <button
+                                        type="button"
+                                        onClick={() => handleDeleteSub(sub.id)}
+                                        title="Hapus Peserta Ini"
+                                        style={{
+                                          border: 'none',
+                                          background: '#fce8e6',
+                                          color: 'var(--danger-color)',
+                                          padding: '4px 8px',
+                                          borderRadius: 4,
+                                          cursor: 'pointer',
+                                        }}
+                                      >
+                                        <Trash2 size={14} />
+                                      </button>
+                                    </div>
+                                  </td>
+                                </tr>
+
+                                {isExpanded && (
+                                  <tr style={{ backgroundColor: '#f0f4ff' }}>
+                                    <td colSpan={8} style={{ padding: '4px 14px 14px 14px', borderBottom: '2px solid #c7d8f9' }}>
+                                      <div
+                                        style={{
+                                          padding: '14px 16px',
+                                          borderRadius: 8,
+                                          background: '#ffffff',
+                                          border: '1.5px solid #c7d8f9',
+                                          boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                                        }}
+                                      >
+                                        {/* Header Preview */}
+                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 12 }}>
+                                          <div>
+                                            <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--primary-color)', display: 'flex', alignItems: 'center', gap: 8 }}>
+                                              <span>Rincian Hasil: {sub.participant.name}</span>
+                                              <span style={{ fontSize: 12, color: '#5f6368', fontWeight: 500 }}>
+                                                (No. {sub.participant.participantNumber || '-'})
+                                              </span>
+                                            </div>
+                                            <div style={{ fontSize: 12, color: '#5f6368', marginTop: 4, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+                                              <span>Instansi: <strong>{sub.participant.institution || '-'}</strong></span>
+                                              <span>Waktu Tes: <strong>{new Date(sub.submittedAt).toLocaleString('id-ID')}</strong></span>
+                                              <span>Durasi Digunakan: <strong>{(sub.durationSecondsUsed / 60).toFixed(1)} Menit</strong></span>
+                                            </div>
+                                          </div>
+                                          <button
+                                            type="button"
+                                            onClick={() => {
+                                              setSelectedSubDetail(null);
+                                              setInspectSession(null);
+                                            }}
+                                            title="Tutup Preview"
+                                            style={{
+                                              border: 'none',
+                                              background: '#f1f3f4',
+                                              borderRadius: '50%',
+                                              width: 26,
+                                              height: 26,
+                                              display: 'flex',
+                                              alignItems: 'center',
+                                              justifyContent: 'center',
+                                              cursor: 'pointer',
+                                              color: '#5f6368',
+                                            }}
+                                          >
+                                            <X size={14} />
+                                          </button>
+                                        </div>
+
+                                        {/* Cards Breakdown */}
+                                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: 10, marginBottom: 12 }}>
+                                          <div style={{ padding: '8px 12px', background: '#f8f9fa', borderRadius: 6, border: '1px solid #e0e0e0' }}>
+                                            <div style={{ fontSize: 11, color: '#5f6368', fontWeight: 600 }}>Sesi 1 (PG)</div>
+                                            <div style={{ fontSize: 15, fontWeight: 700, color: '#202124', marginTop: 2 }}>
+                                              {sub.session1.correctCount} / {sub.session1.totalQuestions}
+                                            </div>
+                                            <div style={{ fontSize: 11, color: 'var(--primary-color)', fontWeight: 600 }}>
+                                              Skor: {sub.session1.scorePercentage.toFixed(1)}%
+                                            </div>
+                                          </div>
+
+                                          <div style={{ padding: '8px 12px', background: '#f8f9fa', borderRadius: 6, border: '1px solid #e0e0e0' }}>
+                                            <div style={{ fontSize: 11, color: '#5f6368', fontWeight: 600 }}>Sesi 2 (Beda / Sama)</div>
+                                            <div style={{ fontSize: 15, fontWeight: 700, color: '#202124', marginTop: 2 }}>
+                                              {sub.session2.correctCount} / {sub.session2.totalQuestions}
+                                            </div>
+                                            <div style={{ fontSize: 11, color: 'var(--primary-color)', fontWeight: 600 }}>
+                                              Skor: {sub.session2.scorePercentage.toFixed(1)}%
+                                            </div>
+                                          </div>
+
+                                          <div style={{ padding: '8px 12px', background: '#f8f9fa', borderRadius: 6, border: '1px solid #e0e0e0' }}>
+                                            <div style={{ fontSize: 11, color: '#5f6368', fontWeight: 600 }}>Sesi 3 (Respon)</div>
+                                            <div style={{ fontSize: 15, fontWeight: 700, color: '#202124', marginTop: 2 }}>
+                                              {sub.session3.correctCount} / {sub.session3.totalQuestions}
+                                            </div>
+                                            <div style={{ fontSize: 11, color: 'var(--primary-color)', fontWeight: 600 }}>
+                                              Skor: {sub.session3.scorePercentage.toFixed(1)}%
+                                            </div>
+                                          </div>
+
+                                          <div style={{ padding: '8px 12px', background: 'var(--primary-light)', borderRadius: 6, border: '1px solid var(--primary-border)' }}>
+                                            <div style={{ fontSize: 11, color: 'var(--primary-color)', fontWeight: 600 }}>Total Akhir</div>
+                                            <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--primary-color)', marginTop: 2 }}>
+                                              {sub.totalCorrect} / {sub.totalQuestions} Soal
+                                            </div>
+                                            <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--primary-color)' }}>
+                                              Nilai: {sub.totalScorePercentage.toFixed(1)}% ({sub.totalScorePercentage >= 70 ? 'LULUS' : 'EVALUASI'})
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        {/* Toggle Per-item Answer Breakdown */}
+                                        <div style={{ borderTop: '1px solid #eeeeee', paddingTop: 10 }}>
+                                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
+                                            <span style={{ fontSize: 12, fontWeight: 600, color: '#5f6368' }}>
+                                              Periksa Butir Lembar Jawaban Peserta:
+                                            </span>
+                                            <div style={{ display: 'flex', gap: 6 }}>
+                                              {([1, 2, 3] as const).map((s) => (
+                                                <button
+                                                  key={s}
+                                                  type="button"
+                                                  onClick={() => setInspectSession(inspectSession === s ? null : s)}
+                                                  style={{
+                                                    fontSize: 11,
+                                                    fontWeight: 600,
+                                                    padding: '4px 10px',
+                                                    borderRadius: 4,
+                                                    cursor: 'pointer',
+                                                    border: inspectSession === s ? '1px solid var(--primary-color)' : '1px solid #dadce0',
+                                                    backgroundColor: inspectSession === s ? 'var(--primary-color)' : '#ffffff',
+                                                    color: inspectSession === s ? '#ffffff' : '#3c4043',
+                                                  }}
+                                                >
+                                                  Sesi {s} ({s === 1 ? '20' : s === 2 ? '45' : '157'} Soal) {inspectSession === s ? '▲' : '▼'}
+                                                </button>
+                                              ))}
+                                            </div>
+                                          </div>
+
+                                          {inspectSession && (
+                                            <div style={{ marginTop: 10, background: '#f8f9fa', padding: 10, borderRadius: 6, border: '1px solid #e0e0e0' }}>
+                                              <div style={{ fontSize: 11, color: '#5f6368', marginBottom: 8, display: 'flex', gap: 12, alignItems: 'center' }}>
+                                                <span>Keterangan:</span>
+                                                <span style={{ color: '#0f9d58', fontWeight: 600 }}>● Hijau: Benar</span>
+                                                <span style={{ color: '#d93025', fontWeight: 600 }}>● Merah: Salah</span>
+                                                <span style={{ color: '#5f6368' }}>● Abu-abu: Kosong</span>
+                                              </div>
+                                              <div
+                                                style={{
+                                                  display: 'grid',
+                                                  gridTemplateColumns: 'repeat(auto-fill, minmax(88px, 1fr))',
+                                                  gap: 6,
+                                                  maxHeight: '180px',
+                                                  overflowY: 'auto',
+                                                  padding: 2,
+                                                }}
+                                              >
+                                                {(() => {
+                                                  const totalQ = inspectSession === 1 ? sub.session1.totalQuestions : inspectSession === 2 ? sub.session2.totalQuestions : sub.session3.totalQuestions;
+                                                  const userAnswers = inspectSession === 1 ? sub.session1.answers : inspectSession === 2 ? sub.session2.answers : sub.session3.answers;
+                                                  const sessionKeys = currentKeys[inspectSession] || {};
+                                                  const items = [];
+
+                                                  for (let q = 1; q <= totalQ; q++) {
+                                                    const ans = userAnswers?.[q];
+                                                    const key = sessionKeys[q];
+                                                    const isCorrect = key && ans && (key.includes('/') ? key.split('/').includes(ans) : ans === key);
+                                                    const isUnanswered = !ans;
+
+                                                    items.push(
+                                                      <div
+                                                        key={q}
+                                                        style={{
+                                                          padding: '4px 6px',
+                                                          borderRadius: 4,
+                                                          fontSize: 11,
+                                                          border: isUnanswered
+                                                            ? '1px solid #dadce0'
+                                                            : isCorrect
+                                                            ? '1px solid #a8dab5'
+                                                            : '1px solid #f5c2c7',
+                                                          backgroundColor: isUnanswered
+                                                            ? '#f1f3f4'
+                                                            : isCorrect
+                                                            ? '#e6f4ea'
+                                                            : '#fce8e6',
+                                                          color: isUnanswered
+                                                            ? '#5f6368'
+                                                            : isCorrect
+                                                            ? '#137333'
+                                                            : '#c5221f',
+                                                          display: 'flex',
+                                                          justifyContent: 'space-between',
+                                                          alignItems: 'center',
+                                                        }}
+                                                        title={`Soal #${q} | Jawaban: ${ans || '-'} | Kunci: ${key || '-'}`}
+                                                      >
+                                                        <span style={{ fontWeight: 700 }}>#{q}</span>
+                                                        <span style={{ fontWeight: 600 }}>
+                                                          {ans || '-'} {isCorrect ? '✓' : isUnanswered ? '' : `(${key})`}
+                                                        </span>
+                                                      </div>
+                                                    );
+                                                  }
+                                                  return items;
+                                                })()}
+                                              </div>
+                                            </div>
+                                          )}
+                                        </div>
+                                      </div>
+                                    </td>
+                                  </tr>
+                                )}
+                              </React.Fragment>
+                            );
+                          })}
                         </tbody>
                       </table>
-                    </div>
-                  )}
-
-                  {/* Detail Modal if viewing single submission */}
-                  {selectedSubDetail && (
-                    <div
-                      style={{
-                        marginTop: 16,
-                        padding: 16,
-                        borderRadius: 8,
-                        background: '#f8f9fa',
-                        border: '1px solid #dadce0',
-                      }}
-                    >
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                        <h4 style={{ fontWeight: 700 }}>
-                          Rincian Jawaban: {selectedSubDetail.participant.name} ({selectedSubDetail.participant.participantNumber})
-                        </h4>
-                        <button
-                          onClick={() => setSelectedSubDetail(null)}
-                          style={{ border: 'none', background: 'transparent', cursor: 'pointer' }}
-                        >
-                          <X size={16} />
-                        </button>
-                      </div>
-                      <p style={{ fontSize: 12, color: '#666', marginBottom: 10 }}>
-                        Total Nilai: {selectedSubDetail.totalScorePercentage.toFixed(1)}% ({selectedSubDetail.totalCorrect}/{selectedSubDetail.totalQuestions} Soal Benar)
-                      </p>
                     </div>
                   )}
                 </div>
